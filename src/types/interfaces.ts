@@ -24,6 +24,8 @@ export interface IMovieDetails extends IMovie {
 
 // 🧭 Navigation types
 export type RootStackParamList = {
-  Home: undefined;
+  HomeScreen: undefined;
+  NowPlayingScreen: undefined;
   Details: { movieID: number };
 };
+
