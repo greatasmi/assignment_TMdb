@@ -2,13 +2,13 @@ import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {
   BORDERRADIUS,
-  COLORS,
-  FONTFAMILY,
   FONTSIZE,
   SPACING,
-} from '../theme/theme';
+} from '../constant/theme/theme';
 import CustomIcon from './CustomIcon';
 
+import {Colors} from '../constant/Colors'
+import {Fontfamily} from '../constant/Fontfamily'
 const genres: any = {
   28: 'Action',
   12: 'Adventure',
@@ -83,16 +83,16 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: COLORS.Black,
+    backgroundColor: Colors.Black,
   },
   cardImage: {
     aspectRatio: 2 / 3,
     borderRadius: BORDERRADIUS.radius_20,
   },
   textTitle: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_24,
-    color: COLORS.White,
+    color: Colors.White,
     textAlign: 'center',
     paddingVertical: SPACING.space_10,
   },
@@ -105,12 +105,13 @@ const styles = StyleSheet.create({
   },
   starIcon: {
     fontSize: FONTSIZE.size_20,
-    color: COLORS.Yellow,
+    color: Colors
+    .Yellow,
   },
   voteText: {
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_14,
-    color: COLORS.White,
+    color: Colors.White,
   },
   genreContainer: {
     flex: 1,
@@ -120,16 +121,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   genreBox: {
-    borderColor: COLORS.WhiteRGBA50,
+    borderColor: Colors.WhiteRGBA50,
     borderWidth: 1,
     paddingVertical: SPACING.space_4,
     paddingHorizontal: SPACING.space_10,
     borderRadius: BORDERRADIUS.radius_25,
   },
   genreText: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_10,
-    color: COLORS.WhiteRGBA75,
+    color: Colors.WhiteRGBA75,
   },
 });
 

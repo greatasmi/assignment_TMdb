@@ -2,13 +2,13 @@ import * as React from 'react';
 import {Text, View, StyleSheet, Image} from 'react-native';
 import {
   BORDERRADIUS,
-  COLORS,
-  FONTFAMILY,
   FONTSIZE,
   SPACING,
-} from '../theme/theme';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+} from '../constant/theme/theme';
+//import {Colors} from 'react-native/Libraries/NewAppScreen';
 
+import {Colors} from '../constant/Colors'
+import {Fontfamily} from '../constant/Fontfamily'
 const CastCard = (props: any) => {
   return (
     <View
@@ -47,15 +47,15 @@ const styles = StyleSheet.create({
   },
   title: {
     alignSelf: 'stretch',
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_12,
-    color: COLORS.White,
+    color: Colors.White,
   },
   subtitle: {
     alignSelf: 'stretch',
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_10,
-    color: COLORS.White,
+    color: Colors.White,
   },
 });
 

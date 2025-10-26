@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
+import {FONTSIZE, SPACING} from '../constant/theme/theme';
 import CustomIcon from './CustomIcon';
 
+import {Colors} from '../constant/Colors'
+import {Fontfamily} from '../constant/Fontfamily'
 const SettingComponent = (props: any) => {
   return (
     <View style={styles.container}>
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   iconStyle: {
-    color: COLORS.White,
+    color: Colors.White,
     fontSize: FONTSIZE.size_24,
     paddingHorizontal: SPACING.space_20,
   },
@@ -40,13 +42,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_18,
-    color: COLORS.White,
+    color: Colors.White,
   },
   subtitle: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_14,
-    color: COLORS.WhiteRGBA15,
+    color: Colors.WhiteRGBA15,
   },
 });

@@ -3,12 +3,11 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import CustomIcon from './CustomIcon';
 import {
   BORDERRADIUS,
-  COLORS,
-  FONTFAMILY,
   FONTSIZE,
   SPACING,
-} from '../theme/theme';
-
+} from '../constant/theme/theme';
+import {Colors} from '../constant/Colors'
+import {Fontfamily} from '../constant/Fontfamily'
 const AppHeader = (props: any) => {
   return (
     <View style={styles.container}>
@@ -28,15 +27,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   iconStyle: {
-    color: COLORS.White,
+    color: Colors.White,
     fontSize: FONTSIZE.size_24,
   },
   headerText: {
     flex: 1,
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_20,
     textAlign: 'center',
-    color: COLORS.White,
+    color: Colors.White,
   },
   emptyContainer: {
     height: SPACING.space_20 * 2,
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: BORDERRADIUS.radius_20,
-    backgroundColor: COLORS.Orange,
+    backgroundColor: Colors.Orange,
   },
 });
 

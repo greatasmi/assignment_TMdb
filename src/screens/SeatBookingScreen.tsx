@@ -16,7 +16,7 @@ import {
   FONTFAMILY,
   FONTSIZE,
   SPACING,
-} from '../theme/theme';
+} from '../constant/theme/theme';
 import LinearGradient from 'react-native-linear-gradient';
 import AppHeader from '../components/AppHeader';
 import CustomIcon from '../components/CustomIcon';

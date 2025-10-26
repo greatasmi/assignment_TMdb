@@ -10,7 +10,7 @@ import {
   StatusBar,
   FlatList,
 } from 'react-native';
-import { COLORS, SPACING } from '../theme/theme';
+import { COLORS, SPACING } from '../constant/theme/theme';
 import {
   getNowPlayingMovies,
   getPopularMovies,

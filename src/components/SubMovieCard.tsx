@@ -1,13 +1,13 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Image, CodegenTypes} from 'react-native';
 import {
   BORDERRADIUS,
-  COLORS,
-  FONTFAMILY,
   FONTSIZE,
   SPACING,
-} from '../theme/theme';
+} from '../constant/theme/theme';
 
+import {Colors} from '../constant/Colors'
+import {Fontfamily} from '../constant/Fontfamily'
 const SubMovieCard = (props: any) => {
   return (
     <TouchableOpacity onPress={() => props.cardFunction()}>
@@ -40,16 +40,16 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: COLORS.Black,
+    backgroundColor: Colors.Black,
   },
   cardImage: {
     aspectRatio: 2 / 3,
     borderRadius: BORDERRADIUS.radius_20,
   },
   textTitle: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_14,
-    color: COLORS.White,
+    color: Colors.White,
     textAlign: 'center',
     paddingVertical: SPACING.space_10,
   },

@@ -7,7 +7,7 @@ import {
   StatusBar,
   FlatList,
 } from 'react-native';
-import {COLORS, SPACING} from '../theme/theme';
+import {COLORS, SPACING} from '../constant/theme/theme';
 import {baseImagePath, searchMovies} from '../api/apicalls';
 import InputHeader from '../components/InputHeader';
 import SubMovieCard from '../components/SubMovieCard';

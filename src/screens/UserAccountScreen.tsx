@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, StatusBar, Image} from 'react-native';
-import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
+import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../constant/theme/theme';
 import AppHeader from '../components/AppHeader';
 import SettingComponent from '../components/SettingComponent';
 
