@@ -6,7 +6,7 @@
     "resolveJsonModule": true,
     "types": ["react", "react-native"]
   },
-  "include": ["src", "src/types/images.d.ts", "src/types/interfaces.ts", "src/types/declarations.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["src", "src/types/images.d.ts", "src/types/interfaces.ts", "src/types/declarations.d.ts", "**/*.ts", "**/*.tsx", "App.tsx"],
  "exclude": ["**/node_modules", "**/Pods"],
   "extends": "@react-native/typescript-config"
 }

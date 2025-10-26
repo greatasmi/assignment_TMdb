@@ -29,3 +29,8 @@ export type RootStackParamList = {
   Details: { movieID: number };
 };
 
+// types/interfaces.ts (or wherever you define types)
+export interface Tab {
+  id: number;
+  title: string;
+}
