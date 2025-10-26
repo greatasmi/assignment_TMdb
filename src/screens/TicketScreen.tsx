@@ -16,7 +16,7 @@ import {
 } from '../constant/theme/theme';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomIcon from '../components/CustomIcon';
-
+import Images from '../constant/Images';
 import { Colors } from '../constant/Colors';
 import { Fontfamily } from '../constant/Fontfamily';
 const TicketScreen = ({navigation, route}: any) => {
@@ -126,10 +126,10 @@ const TicketScreen = ({navigation, route}: any) => {
               </Text>
             </View>
           </View>
-          <Image
-            source={require('../assets/image/barcode.png')}
-            style={styles.barcodeImage}
-          />
+        
+
+          <Image source={Images.barcode} style={styles.barcodeImage} />
+
         </View>
       </View>
     </View>

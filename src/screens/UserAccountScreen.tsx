@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, StatusBar, Image} from 'react-native';
 import {FONTSIZE, SPACING} from '../constant/theme/theme';
 import AppHeader from '../components/AppHeader';
 import SettingComponent from '../components/SettingComponent';
-
+import Images from '../constant/Images';
 import { Colors } from '../constant/Colors';
 import { Fontfamily } from '../constant/Fontfamily';
 const UserAccountScreen = ({navigation}: any) => {
@@ -19,11 +19,11 @@ const UserAccountScreen = ({navigation}: any) => {
       </View>
 
       <View style={styles.profileContainer}>
-        <Image
-          source={require('../assets/image/avatar.png')}
-          style={styles.avatarImage}
-        />
-        <Text style={styles.avatarText}>John Doe</Text>
+       
+
+        <Image source={Images.avatar} style={styles.avatarImage} />
+
+        <Text style={styles.avatarText}>Asma Arain</Text>
       </View>
 
       <View style={styles.profileContainer}>

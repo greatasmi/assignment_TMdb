@@ -12,6 +12,7 @@ import { SPACING } from '../constant/theme/theme';
 import { Colors } from '../constant/Colors';
 import {
   getNowPlayingMovies,
+  getTopRatedMovies,
   getPopularMovies,
   getUpcomingMovies,
 } from '../api/API_ENDPOINTS';
@@ -37,6 +38,8 @@ interface HomeScreenProps {
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [nowPlayingMoviesList, setNowPlayingMoviesList] = useState<Movie[]>([]);
+  const [topRatedMoviesList, setTopRatedMoviesList] = useState<Movie[]>([]);
+  
   const [popularMoviesList, setPopularMoviesList] = useState<Movie[]>([]);
   const [upcomingMoviesList, setUpcomingMoviesList] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -48,6 +51,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
         const nowPlaying = await getNowPlayingMovies();
         setNowPlayingMoviesList([{ id: 'dummy1' }, ...nowPlaying, { id: 'dummy2' }]);
+
+
+         const topRatedMovies = await getTopRatedMovies();
+        setTopRatedMoviesList(topRatedMovies);
 
         const popular = await getPopularMovies();
         setPopularMoviesList(popular);
@@ -122,6 +129,28 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             <View style={{ width: (width - (width * 0.7 + SPACING.space_36 * 2)) / 2 }} />
           )
         }
+      />
+
+{/* TopRatedMovies */}
+      <CategoryHeader title="TopRatedMovies" />
+      <FlatList
+        data={topRatedMoviesList}
+        keyExtractor={(item) => item.id.toString()}
+        horizontal
+        bounces={false}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.containerGap36}
+        renderItem={({ item, index }) => (
+          <SubMovieCard
+            shoudlMarginatedAtEnd
+            cardFunction={() => navigation.push('MovieDetails', { movieid: item.id })}
+            cardWidth={width / 3}
+            isFirst={index === 0}
+            isLast={index === topRatedMoviesList.length - 1}
+            title={item.original_title || ''}
+            imagePath={IMAGE_PATH('w342', item.poster_path || '')}
+          />
+        )}
       />
 
       {/* Popular */}

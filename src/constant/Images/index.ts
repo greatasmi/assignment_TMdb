@@ -12,10 +12,13 @@ import profile from '../../assets/images/profile.png';
 import onesearch from '../../assets/images/onesearch.png';
 import Video from '../../assets/images/video.png';
 import searching from '../../assets/images/searching.png';
-
+import avatar from '../../assets/images/avatar.png';
+import barcode from '../../assets/images/barcode.png';
 
 const Images = {
 
+    avatar,
+    barcode,
     details,
     onesearch,
     searching,
