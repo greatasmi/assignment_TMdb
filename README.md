@@ -1,100 +1,96 @@
-# Getting Started TMDB booking app in react native 
+🎬 TMDb Movie Booking App (React Native)
 
-# Features
+A React Native mobile app for browsing movies, watching trailers, and booking tickets using the TMDb API.
 
-### Movie Browsing
+✨ Features
+🍿 Movie Browsing
 
-### Browse movies in multiple categories:
+Browse movies in multiple categories:
 
-### Now Playing
+Now Playing
 
-### Popular
+Popular
 
-### Top Rated
+Top Rated
 
-### Upcoming
+Upcoming
 
-### Each movie shows:
+Each movie displays:
 
-### Poster image
+🖼 Poster image
 
-### Title
+🎬 Title
 
-### Release date
+📅 Release date
 
-### Circular score (vote average)
+⭐ Circular score (vote average)
 
-2. Movie Details
+🎥 Movie Details
 
-### Detailed movie description
+Detailed movie description
 
-### Trailer video playback
+Trailer video playback
 
-### Genre, overview, and popularity metrics
+Genre, overview, and popularity metrics
 
-3. Booking System
+🎟 Booking System
 
-### Users can select:
+Users can select:
 
-### Movie
+🎬 Movie
 
-### Seats
+💺 Seats
 
-### Date & Time
+📅 Date & 🕒 Time
 
-### Bookings are stored locally using AsyncStorage
+Bookings are stored locally using AsyncStorage
 
-### Booking details include:
+Booking details include:
 
-### Movie Title
+🎬 Movie Title
 
-### Seats
+💺 Seats
 
-### ate & Time
+📅 Date & 🕒 Time
 
-### Total Price
+💰 Total Price
 
 Booking history fetches movie title dynamically from TMDb API if only movieId is stored
 
-4. UI & Design
+🎨 UI & Design
 
-Dark theme with contrasting colors
+🌙 Dark theme with contrasting colors
 
-Rounded cards for movies and bookings
+🟠 Rounded cards for movies and bookings
 
-Circular rating indicator for movie scores
+⭐ Circular rating indicator for movie scores
 
-Smooth navigation using React Navigation
+🔄 Smooth navigation using React Navigation
 
-Screens Overview
+🖥 Screens Overview
+🏠 Home Screen
 
-Home Screen
+Lists movies with posters, titles, release dates, and ratings
 
-Lists movies with posters, titles, release dates, and ratings.
+Tab navigation for different movie categories
 
-Tab navigation for different movie categories.
+🎬 Movie Detail Screen
 
-Movie Detail Screen
+Shows movie description, genres, trailers, and score
 
-Shows movie description, genres, trailers, and score.
+Option to book tickets
 
-Option to book tickets.
+🎫 Booking Detail Screen
 
-Booking Detail Screen
+Displays all user bookings
 
-Displays all user bookings.
+Fetches movie titles dynamically if needed
 
-Fetches movie titles dynamically if needed.
+Shows seats, date, time, and total price
 
-Shows seats, date, time, and total price.
-
-Dependencies
-
-The project uses the following main packages:
-
-
-```
+📦 Dependencies
 Package	Version	Purpose
+```
 @react-native-async-storage/async-storage	2.2.0	Store booking data locally
 @react-navigation/native	7.1.18	App navigation
 @react-navigation/native-stack	7.5.1	Stack navigation
@@ -110,8 +106,10 @@ react-native-vector-icons	10.3.0	Icon usage
 react-native-image-slider-box	2.0.7	Image slider for movie posters
 react-native-encrypted-storage	4.0.3	Secure storage option
 react-native-asset	2.1.1	Asset management
-Installation & Setup
+
 ```
+⚡ Installation & Setup
+
 Clone Repository
 
 git clone <repository-url>
@@ -135,8 +133,20 @@ Run App
 npx react-native run-android   # for Android
 npx react-native run-ios       # for iOS
 
-Future Enhancements
+🚀 Future Enhancements
 
-Add search functionality by movie keyword
+🔍 Add search functionality by movie keyword
+
+🔒 User authentication for multiple devices
+
+💳 Payment gateway integration for ticket booking
 
 
+📸 Screenshots
+
+(Include screenshots of Home Screen, Movie Details, and Booking Details here for client review)
+
+📞 Contact
+
+Asma Jalal
+Email: asmaemail@example.com
