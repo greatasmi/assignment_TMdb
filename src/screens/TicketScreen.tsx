@@ -11,14 +11,14 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import AppHeader from '../components/AppHeader';
 import {
   BORDERRADIUS,
-  COLORS,
-  FONTFAMILY,
   FONTSIZE,
   SPACING,
 } from '../constant/theme/theme';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomIcon from '../components/CustomIcon';
 
+import { Colors } from '../constant/Colors';
+import { Fontfamily } from '../constant/Fontfamily';
 const TicketScreen = ({navigation, route}: any) => {
   const [ticketData, setTicketData] = useState<any>(route.params);
 
@@ -69,7 +69,7 @@ const TicketScreen = ({navigation, route}: any) => {
           source={{uri: ticketData?.ticketImage}}
           style={styles.ticketBGImage}>
           <LinearGradient
-            colors={[COLORS.OrangeRGBA0, COLORS.Orange]}
+            colors={[Colors.OrangeRGBA0, Colors.Orange]}
             style={styles.linearGradient}>
             <View
               style={[
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: COLORS.Black,
+    backgroundColor: Colors.Black,
   },
   appHeaderContainer: {
     marginHorizontal: SPACING.space_36,
@@ -163,15 +163,15 @@ const styles = StyleSheet.create({
     height: '70%',
   },
   linear: {
-    borderTopColor: COLORS.Black,
+    borderTopColor: Colors.Black,
     borderTopWidth: 3,
     width: 300,
     alignSelf: 'center',
-    backgroundColor: COLORS.Orange,
+    backgroundColor: Colors.Orange,
     borderStyle: 'dashed',
   },
   ticketFooter: {
-    backgroundColor: COLORS.Orange,
+    backgroundColor: Colors.Orange,
     width: 300,
     alignItems: 'center',
     paddingBottom: SPACING.space_36,
@@ -194,26 +194,26 @@ const styles = StyleSheet.create({
     marginVertical: SPACING.space_10,
   },
   dateTitle: {
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_24,
-    color: COLORS.White,
+    color: Colors.White,
   },
   subtitle: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_14,
-    color: COLORS.White,
+    color: Colors.White,
   },
   subheading: {
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_18,
-    color: COLORS.White,
+    color: Colors.White,
   },
   subtitleContainer: {
     alignItems: 'center',
   },
   clockIcon: {
     fontSize: FONTSIZE.size_24,
-    color: COLORS.White,
+    color: Colors.White,
     paddingBottom: SPACING.space_10,
   },
   barcodeImage: {
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 80,
-    backgroundColor: COLORS.Black,
+    backgroundColor: Colors.Black,
   },
 });
 

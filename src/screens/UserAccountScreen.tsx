@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, StatusBar, Image} from 'react-native';
-import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../constant/theme/theme';
+import {FONTSIZE, SPACING} from '../constant/theme/theme';
 import AppHeader from '../components/AppHeader';
 import SettingComponent from '../components/SettingComponent';
 
+import { Colors } from '../constant/Colors';
+import { Fontfamily } from '../constant/Fontfamily';
 const UserAccountScreen = ({navigation}: any) => {
   return (
     <View style={styles.container}>
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: COLORS.Black,
+    backgroundColor: Colors.Black,
   },
   appHeaderContainer: {
     marginHorizontal: SPACING.space_36,
@@ -74,10 +76,10 @@ const styles = StyleSheet.create({
     borderRadius: 80,
   },
   avatarText: {
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_16,
     marginTop: SPACING.space_16,
-    color: COLORS.White,
+    color: Colors.White,
   },
 });
 

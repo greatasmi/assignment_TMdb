@@ -11,14 +11,15 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import {baseImagePath, movieCastDetails, movieDetails} from '../api/apicalls';
+import { movieCastDetails, movieDetails} from '../api/API_ENDPOINTS';
 import {
   BORDERRADIUS,
-  COLORS,
-  FONTFAMILY,
   FONTSIZE,
   SPACING,
 } from '../constant/theme/theme';
+import { IMAGE_PATH } from '../api/API_KEY';
+import { Colors } from '../constant/Colors';
+import { Fontfamily } from '../constant/Fontfamily';
 import AppHeader from '../components/AppHeader';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomIcon from '../components/CustomIcon';
@@ -84,7 +85,7 @@ const MovieDetailsScreen = ({navigation, route}: any) => {
           />
         </View>
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size={'large'} color={COLORS.Orange} />
+          <ActivityIndicator size={'large'} color={Colors.Orange} />
         </View>
       </ScrollView>
     );
@@ -99,11 +100,11 @@ const MovieDetailsScreen = ({navigation, route}: any) => {
       <View>
         <ImageBackground
           source={{
-            uri: baseImagePath('w780', movieData?.backdrop_path),
+            uri: IMAGE_PATH('w780', movieData?.backdrop_path),
           }}
           style={styles.imageBG}>
           <LinearGradient
-            colors={[COLORS.BlackRGB10, COLORS.Black]}
+            colors={[Colors.BlackRGB10, Colors.Black]}
             style={styles.linearGradient}>
             <View style={styles.appHeaderContainer}>
               <AppHeader
@@ -116,7 +117,7 @@ const MovieDetailsScreen = ({navigation, route}: any) => {
         </ImageBackground>
         <View style={styles.imageBG}></View>
         <Image
-          source={{uri: baseImagePath('w342', movieData?.poster_path)}}
+          source={{uri: IMAGE_PATH('w342', movieData?.poster_path)}}
           style={styles.cardImage}
         />
       </View>
@@ -173,7 +174,7 @@ const MovieDetailsScreen = ({navigation, route}: any) => {
               cardWidth={80}
               isFirst={index == 0 ? true : false}
               isLast={index == movieCastData?.length - 1 ? true : false}
-              imagePath={baseImagePath('w185', item.profile_path)}
+              imagePath={IMAGE_PATH('w185', item.profile_path)}
               title={item.original_name}
               subtitle={item.character}
             />
@@ -185,8 +186,8 @@ const MovieDetailsScreen = ({navigation, route}: any) => {
             style={styles.buttonBG}
             onPress={() => {
               navigation.push('SeatBooking', {
-                BgImage: baseImagePath('w780', movieData.backdrop_path),
-                PosterImage: baseImagePath('original', movieData.poster_path),
+                BgImage: IMAGE_PATH('w780', movieData.backdrop_path),
+                PosterImage: IMAGE_PATH('original', movieData.poster_path),
               });
             }}>
             <Text style={styles.buttonText}>Select Seats</Text>
@@ -201,7 +202,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: COLORS.Black,
+    backgroundColor: Colors.Black,
   },
   loadingContainer: {
     flex: 1,
@@ -231,7 +232,7 @@ const styles = StyleSheet.create({
   },
   clockIcon: {
     fontSize: FONTSIZE.size_20,
-    color: COLORS.WhiteRGBA50,
+    color: Colors.WhiteRGBA50,
     marginRight: SPACING.space_8,
   },
   timeContainer: {
@@ -242,14 +243,14 @@ const styles = StyleSheet.create({
     paddingTop: SPACING.space_15,
   },
   runtimeText: {
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_14,
-    color: COLORS.White,
+    color: Colors.White,
   },
   title: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_24,
-    color: COLORS.White,
+    color: Colors.White,
     marginHorizontal: SPACING.space_36,
     marginVertical: SPACING.space_15,
     textAlign: 'center',
@@ -262,22 +263,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   genreBox: {
-    borderColor: COLORS.WhiteRGBA50,
+    borderColor: Colors.WhiteRGBA50,
     borderWidth: 1,
     paddingHorizontal: SPACING.space_10,
     paddingVertical: SPACING.space_4,
     borderRadius: BORDERRADIUS.radius_25,
   },
   genreText: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_10,
-    color: COLORS.WhiteRGBA75,
+    color: Colors.WhiteRGBA75,
   },
   tagline: {
-    fontFamily: FONTFAMILY.poppins_thin,
+    fontFamily: Fontfamily.poppins_thin,
     fontSize: FONTSIZE.size_14,
     fontStyle: 'italic',
-    color: COLORS.White,
+    color: Colors.White,
     marginHorizontal: SPACING.space_36,
     marginVertical: SPACING.space_15,
     textAlign: 'center',
@@ -292,12 +293,12 @@ const styles = StyleSheet.create({
   },
   starIcon: {
     fontSize: FONTSIZE.size_20,
-    color: COLORS.Yellow,
+    color: Colors.Yellow,
   },
   descriptionText: {
-    fontFamily: FONTFAMILY.poppins_light,
+    fontFamily: Fontfamily.poppins_light,
     fontSize: FONTSIZE.size_14,
-    color: COLORS.White,
+    color: Colors.White,
   },
   containerGap24: {
     gap: SPACING.space_24,
@@ -310,10 +311,10 @@ const styles = StyleSheet.create({
     borderRadius: BORDERRADIUS.radius_25 * 2,
     paddingHorizontal: SPACING.space_24,
     paddingVertical: SPACING.space_10,
-    backgroundColor: COLORS.Orange,
-    fontFamily: FONTFAMILY.poppins_medium,
+    backgroundColor: Colors.Orange,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_14,
-    color: COLORS.White,
+    color: Colors.White,
   },
 });
 

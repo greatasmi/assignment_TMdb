@@ -7,11 +7,14 @@ import {
   StatusBar,
   FlatList,
 } from 'react-native';
-import {COLORS, SPACING} from '../constant/theme/theme';
-import {baseImagePath, searchMovies} from '../api/apicalls';
+import { SPACING} from '../constant/theme/theme';
+import {searchMovies} from '../api/API_ENDPOINTS';
 import InputHeader from '../components/InputHeader';
 import SubMovieCard from '../components/SubMovieCard';
+import { IMAGE_PATH } from '../api/API_KEY';
 
+import { Colors } from '../constant/Colors';
+import { Fontfamily } from '../constant/Fontfamily';
 const {width, height} = Dimensions.get('screen');
 
 const SearchScreen = ({navigation}: any) => {
@@ -53,7 +56,7 @@ const SearchScreen = ({navigation}: any) => {
               }}
               cardWidth={width / 2 - SPACING.space_12 * 2}
               title={item.original_title}
-              imagePath={baseImagePath('w342', item.poster_path)}
+              imagePath={IMAGE_PATH('w342', item.poster_path)}
             />
           )}
         />
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width,
     alignItems: 'center',
-    backgroundColor: COLORS.Black,
+    backgroundColor: Colors.Black,
   },
   InputHeaderContainer: {
     display: 'flex',

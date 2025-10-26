@@ -12,11 +12,12 @@ import {
 } from 'react-native';
 import {
   BORDERRADIUS,
-  COLORS,
-  FONTFAMILY,
   FONTSIZE,
   SPACING,
 } from '../constant/theme/theme';
+
+import { Colors } from '../constant/Colors';
+import { Fontfamily } from '../constant/Fontfamily';
 import LinearGradient from 'react-native-linear-gradient';
 import AppHeader from '../components/AppHeader';
 import CustomIcon from '../components/CustomIcon';
@@ -153,7 +154,7 @@ const SeatBookingScreen = ({navigation, route}: any) => {
           source={{uri: route.params?.BgImage}}
           style={styles.ImageBG}>
           <LinearGradient
-            colors={[COLORS.BlackRGB10, COLORS.Black]}
+            colors={[Colors.BlackRGB10, Colors.Black]}
             style={styles.linearGradient}>
             <View style={styles.appHeaderContainer}>
               <AppHeader
@@ -183,8 +184,8 @@ const SeatBookingScreen = ({navigation, route}: any) => {
                         name="seat"
                         style={[
                           styles.seatIcon,
-                          subitem.taken ? {color: COLORS.Grey} : {},
-                          subitem.selected ? {color: COLORS.Orange} : {},
+                          subitem.taken ? {color: Colors.Grey} : {},
+                          subitem.selected ? {color: Colors.Orange} : {},
                         ]}
                       />
                     </TouchableOpacity>
@@ -202,14 +203,14 @@ const SeatBookingScreen = ({navigation, route}: any) => {
           <View style={styles.radioContainer}>
             <CustomIcon
               name="radio"
-              style={[styles.radioIcon, {color: COLORS.Grey}]}
+              style={[styles.radioIcon, {color: Colors.Grey}]}
             />
             <Text style={styles.radioText}>Taken</Text>
           </View>
           <View style={styles.radioContainer}>
             <CustomIcon
               name="radio"
-              style={[styles.radioIcon, {color: COLORS.Orange}]}
+              style={[styles.radioIcon, {color: Colors.Orange}]}
             />
             <Text style={styles.radioText}>Selected</Text>
           </View>
@@ -235,7 +236,7 @@ const SeatBookingScreen = ({navigation, route}: any) => {
                       ? {marginRight: SPACING.space_24}
                       : {},
                     index == selectedDateIndex
-                      ? {backgroundColor: COLORS.Orange}
+                      ? {backgroundColor: Colors.Orange}
                       : {},
                   ]}>
                   <Text style={styles.dateText}>{item.date}</Text>
@@ -266,7 +267,7 @@ const SeatBookingScreen = ({navigation, route}: any) => {
                       ? {marginRight: SPACING.space_24}
                       : {},
                     index == selectedTimeIndex
-                      ? {backgroundColor: COLORS.Orange}
+                      ? {backgroundColor: Colors.Orange}
                       : {},
                   ]}>
                   <Text style={styles.timeText}>{item}</Text>
@@ -294,7 +295,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: COLORS.Black,
+    backgroundColor: Colors.Black,
   },
   ImageBG: {
     width: '100%',
@@ -309,9 +310,9 @@ const styles = StyleSheet.create({
   },
   screenText: {
     textAlign: 'center',
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_10,
-    color: COLORS.WhiteRGBA15,
+    color: Colors.WhiteRGBA15,
   },
   seatContainer: {
     marginVertical: SPACING.space_20,
@@ -326,7 +327,7 @@ const styles = StyleSheet.create({
   },
   seatIcon: {
     fontSize: FONTSIZE.size_24,
-    color: COLORS.White,
+    color: Colors.White,
   },
   seatRadioContainer: {
     flexDirection: 'row',
@@ -342,12 +343,12 @@ const styles = StyleSheet.create({
   },
   radioIcon: {
     fontSize: FONTSIZE.size_20,
-    color: COLORS.White,
+    color: Colors.White,
   },
   radioText: {
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_12,
-    color: COLORS.White,
+    color: Colors.White,
   },
   containerGap24: {
     gap: SPACING.space_24,
@@ -356,19 +357,19 @@ const styles = StyleSheet.create({
     width: SPACING.space_10 * 7,
     height: SPACING.space_10 * 10,
     borderRadius: SPACING.space_10 * 10,
-    backgroundColor: COLORS.DarkGrey,
+    backgroundColor: Colors.DarkGrey,
     alignItems: 'center',
     justifyContent: 'center',
   },
   dateText: {
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_24,
-    color: COLORS.White,
+    color: Colors.White,
   },
   dayText: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_12,
-    color: COLORS.White,
+    color: Colors.White,
   },
   OutterContainer: {
     marginVertical: SPACING.space_24,
@@ -376,17 +377,17 @@ const styles = StyleSheet.create({
   timeContainer: {
     paddingVertical: SPACING.space_10,
     borderWidth: 1,
-    borderColor: COLORS.WhiteRGBA50,
+    borderColor: Colors.WhiteRGBA50,
     paddingHorizontal: SPACING.space_20,
     borderRadius: BORDERRADIUS.radius_25,
-    backgroundColor: COLORS.DarkGrey,
+    backgroundColor: Colors.DarkGrey,
     alignItems: 'center',
     justifyContent: 'center',
   },
   timeText: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_14,
-    color: COLORS.White,
+    color: Colors.White,
   },
   buttonPriceContainer: {
     flexDirection: 'row',
@@ -399,23 +400,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   totalPriceText: {
-    fontFamily: FONTFAMILY.poppins_regular,
+    fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_14,
-    color: COLORS.Grey,
+    color: Colors.Grey,
   },
   price: {
-    fontFamily: FONTFAMILY.poppins_medium,
+    fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_24,
-    color: COLORS.White,
+    color: Colors.White,
   },
   buttonText: {
     borderRadius: BORDERRADIUS.radius_25,
     paddingHorizontal: SPACING.space_24,
     paddingVertical: SPACING.space_10,
-    fontFamily: FONTFAMILY.poppins_semibold,
+    fontFamily: Fontfamily.poppins_semibold,
     fontSize: FONTSIZE.size_16,
-    color: COLORS.White,
-    backgroundColor: COLORS.Orange,
+    color: Colors.White,
+    backgroundColor: Colors.Orange,
   },
 });
 
