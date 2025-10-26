@@ -1,37 +1,71 @@
-// src/components/NavHeader.tsx
+// src/components/NavHeader/index.tsx
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../types/interfaces';
+import { wp, hp } from '../Responsive';
+import Images from '../../constant/Images';
 
-// ✅ Define prop type
 interface NavHeaderProps {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'Details'>;
+  title?: string;
+  showLogo?: boolean;
+  backgroundColor?: string;
+  textColor?: string;
+  showBackButton?: boolean;
+  navigation?: NativeStackNavigationProp<RootStackParamList>;
 }
 
-const NavHeader: React.FC<NavHeaderProps> = ({ navigation }) => {
+const NavHeader: React.FC<NavHeaderProps> = ({
+  title = 'TMDb App',
+  showLogo = true,
+  backgroundColor = '#121212',
+  textColor = '#fff',
+  showBackButton = false,
+  navigation,
+}) => {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.backButton}>👈</Text>
+    <View style={[styles.container, { backgroundColor }]}>
+      {/* 🔙 Text-based Back Button */}
+      {showBackButton && navigation && (
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Text style={[styles.backText, { color: textColor }]}>← Back</Text>
         </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+      )}
+
+      {/* 🎬 Logo */}
+      {showLogo && (
+        <Image source={Images.logo} style={styles.logo} resizeMode="contain" />
+      )}
+
+      {/* 🧾 Title */}
+      <Text style={[styles.title, { color: textColor }]}>{title}</Text>
+    </View>
   );
 };
 
 export default NavHeader;
 
 const styles = StyleSheet.create({
-  safeArea: {
-    backgroundColor: 'transparent',
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: hp(2),
+    paddingHorizontal: wp(4),
   },
   backButton: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'white',
-    marginLeft: 10,
+    marginRight: wp(3),
+  },
+  backText: {
+    fontSize: wp(4),
+    fontWeight: '500',
+  },
+  logo: {
+    width: wp(10),
+    height: wp(10),
+    marginRight: wp(2),
+  },
+  title: {
+    fontSize: wp(5),
+    fontWeight: '700',
   },
 });

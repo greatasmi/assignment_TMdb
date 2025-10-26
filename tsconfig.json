@@ -1,5 +1,12 @@
 {
-  "extends": "@react-native/typescript-config",
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["**/node_modules", "**/Pods"]
+  "compilerOptions": {
+    "jsx": "react-native",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "types": ["react", "react-native"]
+  },
+  "include": ["src", "src/types/images.d.ts", "src/types/interfaces.ts", "src/types/declarations.d.ts", "**/*.ts", "**/*.tsx"],
+ "exclude": ["**/node_modules", "**/Pods"],
+  "extends": "@react-native/typescript-config"
 }

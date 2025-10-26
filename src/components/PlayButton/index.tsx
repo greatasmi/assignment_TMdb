@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet } from 'react-native';
-import Images from '../../constant/Images'; // ✅ Centralized image import
+import Images from '../../constant/Images'; 
 
 interface IProps {
   setModalVisible: (value: boolean) => void;

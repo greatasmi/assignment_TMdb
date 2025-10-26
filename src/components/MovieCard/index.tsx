@@ -1,27 +1,22 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
-import { NavigationProp } from '@react-navigation/native';
 import { IMovie } from '../../types/interfaces';
-import { imagePath } from '../../apis/API_ENDPOINTS';
-import Images from '../../constant/Images'; // ✅ Centralized image import
+import { IMAGE_PATH } from '../../apis/API_KEY';
+import Images from '../../constant/Images';
 
 interface IProps {
   movie: IMovie;
-  navigation: NavigationProp<any, any>;
+  onPress?: () => void;
 }
 
-const MovieCard: React.FC<IProps> = ({ movie, navigation }) => {
-  const onPress = () => {
-    navigation.navigate('Details', { movieID: movie.id });
-  };
-
+const MovieCard: React.FC<IProps> = ({ movie, onPress }) => {
   return (
     <TouchableOpacity style={styles.cardContainer} onPress={onPress}>
       <Image
         source={
           movie.poster_path
-            ? { uri: `${imagePath}${movie.poster_path}` }
-            : Images.movie_poster // ✅ Use centralized placeholder image
+            ? { uri: `${IMAGE_PATH}${movie.poster_path}` }
+            : Images.movie_poster
         }
         resizeMode="cover"
         style={styles.image}
