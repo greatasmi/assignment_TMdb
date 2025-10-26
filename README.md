@@ -1,97 +1,142 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Getting Started TMDB booking app in react native 
 
-# Getting Started
+# Features
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+### Movie Browsing
 
-## Step 1: Start Metro
+### Browse movies in multiple categories:
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### Now Playing
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Popular
 
-```sh
-# Using npm
-npm start
+### Top Rated
 
-# OR using Yarn
-yarn start
+### Upcoming
+
+### Each movie shows:
+
+### Poster image
+
+### Title
+
+### Release date
+
+### Circular score (vote average)
+
+2. Movie Details
+
+### Detailed movie description
+
+### Trailer video playback
+
+### Genre, overview, and popularity metrics
+
+3. Booking System
+
+### Users can select:
+
+### Movie
+
+### Seats
+
+### Date & Time
+
+### Bookings are stored locally using AsyncStorage
+
+### Booking details include:
+
+### Movie Title
+
+### Seats
+
+### ate & Time
+
+### Total Price
+
+Booking history fetches movie title dynamically from TMDb API if only movieId is stored
+
+4. UI & Design
+
+Dark theme with contrasting colors
+
+Rounded cards for movies and bookings
+
+Circular rating indicator for movie scores
+
+Smooth navigation using React Navigation
+
+Screens Overview
+
+Home Screen
+
+Lists movies with posters, titles, release dates, and ratings.
+
+Tab navigation for different movie categories.
+
+Movie Detail Screen
+
+Shows movie description, genres, trailers, and score.
+
+Option to book tickets.
+
+Booking Detail Screen
+
+Displays all user bookings.
+
+Fetches movie titles dynamically if needed.
+
+Shows seats, date, time, and total price.
+
+Dependencies
+
+The project uses the following main packages:
+
+
 ```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+Package	Version	Purpose
+@react-native-async-storage/async-storage	2.2.0	Store booking data locally
+@react-navigation/native	7.1.18	App navigation
+@react-navigation/native-stack	7.5.1	Stack navigation
+@react-navigation/bottom-tabs	7.5.0	Tab navigation
+axios	1.12.2	API calls to TMDb
+react-native-video	6.17.0	Video playback (trailers)
+react-native-video-controls	2.8.1	Video controls
+react-native-svg	15.14.0	Circular score visualization
+react-native-linear-gradient	2.8.3	Gradient UI elements
+react-native-safe-area-context	5.6.1	Safe area handling
+react-native-gesture-handler	2.29.0	Gesture handling
+react-native-vector-icons	10.3.0	Icon usage
+react-native-image-slider-box	2.0.7	Image slider for movie posters
+react-native-encrypted-storage	4.0.3	Secure storage option
+react-native-asset	2.1.1	Asset management
+Installation & Setup
 ```
+Clone Repository
 
-### iOS
+git clone <repository-url>
+cd <project-folder>
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+Install Dependencies
 
-```sh
-bundle install
-```
+npm install
 
-Then, and every time you update your native dependencies, run:
 
-```sh
-bundle exec pod install
-```
+Set TMDb API Key
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Add your API key in API_ENDPOINTS.ts:
 
-```sh
-# Using npm
-npm run ios
+export const TMDB_API_KEY = 'YOUR_API_KEY_HERE';
 
-# OR using Yarn
-yarn ios
-```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Run App
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+npx react-native run-android   # for Android
+npx react-native run-ios       # for iOS
 
-## Step 3: Modify your app
+Future Enhancements
 
-Now that you have successfully run the app, let's make changes!
+Add search functionality by movie keyword
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.

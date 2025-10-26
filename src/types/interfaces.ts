@@ -26,6 +26,10 @@ export interface IMovieDetails extends IMovie {
 export type RootStackParamList = {
   HomeScreen: undefined;
   NowPlayingScreen: undefined;
+  BookingScreen: undefined;
+  Booking: undefined;
+  BottomTabs: undefined;
+  BookingDetail: undefined;
   Details: { movieID: number };
 };
 
