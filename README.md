@@ -144,6 +144,10 @@ npx react-native run-ios       # for iOS
 
 📸 Screenshots
 
+<img src="https://github.com/greatasmi/assignment_TMdb/blob/main/tmdb.gif" alt="App Screenshot" width="260" height="460" />
+
+<img src="https://github.com/greatasmi/assignment_TMdb/blob/main/tmdb1.gif" alt="App Screenshot" width="200" height="400" />
+
 (Include screenshots of Home Screen, Movie Details, and Booking Details here for client review)
 
 📞 Contact
