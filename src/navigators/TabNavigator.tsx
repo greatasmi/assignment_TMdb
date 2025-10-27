@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
-import TicketScreen from '../screens/TicketScreen';
+import TicketScreen from '../screens/BookingTicketScreen';
 import UserAccountScreen from '../screens/UserAccountScreen';
 import { FONTSIZE, SPACING } from '../constant/theme/theme';
 import { Colors } from '../constant/Colors';

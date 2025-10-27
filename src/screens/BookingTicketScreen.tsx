@@ -15,11 +15,11 @@ import {
   SPACING,
 } from '../constant/theme/theme';
 import LinearGradient from 'react-native-linear-gradient';
-import CustomIcon from '../components/CustomIcon';
 import Images from '../constant/Images';
 import { Colors } from '../constant/Colors';
 import { Fontfamily } from '../constant/Fontfamily';
-const TicketScreen = ({navigation, route}: any) => {
+
+const BookingTicketScreen = ({navigation, route}: any) => {
   const [ticketData, setTicketData] = useState<any>(route.params);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const TicketScreen = ({navigation, route}: any) => {
           source={{uri: ticketData?.ticketImage}}
           style={styles.ticketBGImage}>
           <LinearGradient
-            colors={[Colors.OrangeRGBA0, Colors.Orange]}
+            colors={[Colors.PinkRGBA0, Colors.Pink]}
             style={styles.linearGradient}>
             <View
               style={[
@@ -102,7 +102,7 @@ const TicketScreen = ({navigation, route}: any) => {
               <Text style={styles.subtitle}>{ticketData?.date.day}</Text>
             </View>
             <View style={styles.subtitleContainer}>
-              <CustomIcon name="clock" style={styles.clockIcon} />
+              <Image source={Images.clock} style={styles.clockIcon} />
               <Text style={styles.subtitle}>{ticketData?.time}</Text>
             </View>
           </View>
@@ -167,11 +167,11 @@ const styles = StyleSheet.create({
     borderTopWidth: 3,
     width: 300,
     alignSelf: 'center',
-    backgroundColor: Colors.Orange,
+    backgroundColor: Colors.Pink,
     borderStyle: 'dashed',
   },
   ticketFooter: {
-    backgroundColor: Colors.Orange,
+    backgroundColor: Colors.Pink,
     width: 300,
     alignItems: 'center',
     paddingBottom: SPACING.space_36,
@@ -228,4 +228,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TicketScreen;
+export default BookingTicketScreen;

@@ -19,7 +19,6 @@ export const getNowPlayingMovies = async () => {
   console.log('🎬 Fetching Now Playing Movies...');
   const response = await api.get(`/movie/now_playing?${apiKey}&language=en-US&page=1`);
   console.log('✅ Now Playing Movies Fetched:', response.data.results.length);
-  console.log('🎞 First Movie:', response.data.results[0]?.title);
   return response.data.results;
 };
 
@@ -28,7 +27,6 @@ export const getPopularMovies = async () => {
   console.log('🎬 Fetching Popular Movies...');
   const response = await api.get(`/movie/popular?${apiKey}&language=en-US&page=1`);
   console.log('✅ Popular Movies Fetched:', response.data.results.length);
-  console.log('🎞 First Movie:', response.data.results[0]?.title);
   return response.data.results;
 };
 
@@ -37,7 +35,6 @@ export const getTopRatedMovies = async () => {
   console.log('🎬 Fetching Top Rated Movies...');
   const response = await api.get(`/movie/top_rated?${apiKey}&language=en-US&page=1`);
   console.log('✅ Top Rated Movies Fetched:', response.data.results.length);
-  console.log('🎞 First Movie:', response.data.results[0]?.title);
   return response.data.results;
 };
 
@@ -46,7 +43,6 @@ export const getUpcomingMovies = async () => {
   console.log('🎬 Fetching Upcoming Movies...');
   const response = await api.get(`/movie/upcoming?${apiKey}&language=en-US&page=1`);
   console.log('✅ Upcoming Movies Fetched:', response.data.results.length);
-  console.log('🎞 First Movie:', response.data.results[0]?.title);
   return response.data.results;
 };
 
@@ -58,17 +54,19 @@ export const getMovieDetails = async (movieId: number) => {
   return response.data;
 };
 
-export const searchMovies = (keyword: string) => {
-  return `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${keyword}`;
+// 🔍 Search Movies
+export const searchMovies = async (keyword: string) => {
+  const response = await api.get(`/search/movie?${apiKey}&query=${keyword}`);
+  return response.data.results;
+};
+
+// 👥 Cast Details
+export const movieCastDetails = async (id: number) => {
+  const response = await api.get(`/movie/${id}/credits?${apiKey}`);
+  return response.data.cast;
 };
 
 
-export const movieDetails = (id: number) => {
-  return `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
-};
-export const movieCastDetails = (id: number) => {
-  return `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`;
-};
 
 // export const nowPlayingMovies: string = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
 // export const upcomingMovies: string = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
