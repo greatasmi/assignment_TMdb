@@ -28,8 +28,8 @@ export type RootStackParamList = {
   NowPlayingScreen: undefined;
   BookingScreen: undefined;
   Booking: undefined;
-   BottomTabs: undefined;
-   BookingDetail: undefined;
+  BottomTabs: undefined;
+  BookingDetail: undefined;
   Details: { movieID: number };
 };
 
