@@ -17,8 +17,8 @@ export interface ThemeColors {
 interface Color {
   Black: string;
   BlackRGB10: string;
-  Orange: string;
-  OrangeRGBA0: string;
+  Pink: string;
+ PinkRGBA0: string;
   Grey: string;
   DarkGrey: string;
   Yellow: string;
@@ -82,8 +82,8 @@ export const lightGradients: ThemeGradients = {
 export const Colors: Color = {
   Black: '#000000',
   BlackRGB10: 'rgba(0,0,0,0.1)',
-  Orange: '#FF5524',
-  OrangeRGBA0: 'rgba(255,85,36,0)',
+  Pink: '#f824ffff',
+  PinkRGBA0: 'rgba(255,85,36,0)',
   Grey: '#333333',
   DarkGrey: '#0b0b0b',
   Yellow: '#E1CD17',

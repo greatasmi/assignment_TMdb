@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Image} from 'react-native';
 import {FONTSIZE, SPACING} from '../constant/theme/theme';
-import CustomIcon from './CustomIcon';
+import Images from '../constant/Images';
 
 import {Colors} from '../constant/Colors'
 import {Fontfamily} from '../constant/Fontfamily'
@@ -9,7 +9,7 @@ const SettingComponent = (props: any) => {
   return (
     <View style={styles.container}>
       <View>
-        <CustomIcon name={props.icon} style={styles.iconStyle} />
+        <Image source={Images.logo} style={styles.iconStyle} />
       </View>
       <View style={styles.settingContainer}>
         <Text style={styles.title}>{props.heading}</Text>
@@ -17,7 +17,7 @@ const SettingComponent = (props: any) => {
         <Text style={styles.subtitle}>{props.subtitle}</Text>
       </View>
       <View style={styles.iconBG}>
-        <CustomIcon name={'arrow-right'} style={styles.iconStyle} />
+        <Image source={Images.rightarrow} style={styles.iconStyle} />
       </View>
     </View>
   );

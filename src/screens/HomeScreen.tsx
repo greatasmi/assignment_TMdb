@@ -87,7 +87,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
           <InputHeader searchFunction={searchMoviesFunction} />
         </View>
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={Colors.Orange} />
+          <ActivityIndicator size="large" color={Colors.Pink} />
         </View>
       </ScrollView>
     );

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   FlatList,
   ToastAndroid,
+  Image,
 } from 'react-native';
 import {
   BORDERRADIUS,
@@ -20,9 +21,8 @@ import { Colors } from '../constant/Colors';
 import { Fontfamily } from '../constant/Fontfamily';
 import LinearGradient from 'react-native-linear-gradient';
 import AppHeader from '../components/AppHeader';
-import CustomIcon from '../components/CustomIcon';
 import EncryptedStorage from 'react-native-encrypted-storage';
-
+import Images from '../constant/Images';
 const timeArray: string[] = [
   '10:30',
   '12:30',
@@ -78,7 +78,7 @@ const generateSeats = () => {
   return rowArray;
 };
 
-const SeatBookingScreen = ({navigation, route}: any) => {
+const SeatBookingScreen = ({ navigation, route }: any) => {
   const [dateArray, setDateArray] = useState<any[]>(generateDate());
   const [selectedDateIndex, setSelectedDateIndex] = useState<any>();
   const [price, setPrice] = useState<number>(0);
@@ -151,7 +151,7 @@ const SeatBookingScreen = ({navigation, route}: any) => {
       <StatusBar hidden />
       <View>
         <ImageBackground
-          source={{uri: route.params?.BgImage}}
+          source={{ uri: route.params?.BgImage }}
           style={styles.ImageBG}>
           <LinearGradient
             colors={[Colors.BlackRGB10, Colors.Black]}
@@ -180,14 +180,15 @@ const SeatBookingScreen = ({navigation, route}: any) => {
                       onPress={() => {
                         selectSeat(index, subindex, subitem.number);
                       }}>
-                      <CustomIcon
-                        name="seat"
+                      <Image
+                        source={Images.seat}
                         style={[
                           styles.seatIcon,
-                          subitem.taken ? {color: Colors.Grey} : {},
-                          subitem.selected ? {color: Colors.Orange} : {},
+                          subitem.taken ? { tintColor: Colors.Grey } : {},
+                          subitem.selected ? { tintColor: Colors.Pink } : {},
                         ]}
                       />
+
                     </TouchableOpacity>
                   );
                 })}
@@ -197,20 +198,20 @@ const SeatBookingScreen = ({navigation, route}: any) => {
         </View>
         <View style={styles.seatRadioContainer}>
           <View style={styles.radioContainer}>
-            <CustomIcon name="radio" style={styles.radioIcon} />
+            <Image source={Images.radioicon} style={styles.radioIcon} />
             <Text style={styles.radioText}>Available</Text>
           </View>
           <View style={styles.radioContainer}>
-            <CustomIcon
-              name="radio"
-              style={[styles.radioIcon, {color: Colors.Grey}]}
-            />
+           <Image
+  source={Images.radioicon}
+  style={[styles.radioIcon, { tintColor: Colors.Grey }]}
+/>
+
             <Text style={styles.radioText}>Taken</Text>
           </View>
           <View style={styles.radioContainer}>
-            <CustomIcon
-              name="radio"
-              style={[styles.radioIcon, {color: Colors.Orange}]}
+            <Image source={Images.radioicon}
+              style={[styles.radioIcon, { tintColor: Colors.Pink }]}
             />
             <Text style={styles.radioText}>Selected</Text>
           </View>
@@ -224,19 +225,19 @@ const SeatBookingScreen = ({navigation, route}: any) => {
           horizontal
           bounces={false}
           contentContainerStyle={styles.containerGap24}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             return (
               <TouchableOpacity onPress={() => setSelectedDateIndex(index)}>
                 <View
                   style={[
                     styles.dateContainer,
                     index == 0
-                      ? {marginLeft: SPACING.space_24}
+                      ? { marginLeft: SPACING.space_24 }
                       : index == dateArray.length - 1
-                      ? {marginRight: SPACING.space_24}
-                      : {},
+                        ? { marginRight: SPACING.space_24 }
+                        : {},
                     index == selectedDateIndex
-                      ? {backgroundColor: Colors.Orange}
+                      ? { backgroundColor: Colors.Pink }
                       : {},
                   ]}>
                   <Text style={styles.dateText}>{item.date}</Text>
@@ -255,19 +256,19 @@ const SeatBookingScreen = ({navigation, route}: any) => {
           horizontal
           bounces={false}
           contentContainerStyle={styles.containerGap24}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             return (
               <TouchableOpacity onPress={() => setSelectedTimeIndex(index)}>
                 <View
                   style={[
                     styles.timeContainer,
                     index == 0
-                      ? {marginLeft: SPACING.space_24}
+                      ? { marginLeft: SPACING.space_24 }
                       : index == dateArray.length - 1
-                      ? {marginRight: SPACING.space_24}
-                      : {},
+                        ? { marginRight: SPACING.space_24 }
+                        : {},
                     index == selectedTimeIndex
-                      ? {backgroundColor: Colors.Orange}
+                      ? { backgroundColor: Colors.Pink }
                       : {},
                   ]}>
                   <Text style={styles.timeText}>{item}</Text>
@@ -328,6 +329,9 @@ const styles = StyleSheet.create({
   seatIcon: {
     fontSize: FONTSIZE.size_24,
     color: Colors.White,
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
   },
   seatRadioContainer: {
     flexDirection: 'row',
@@ -344,6 +348,9 @@ const styles = StyleSheet.create({
   radioIcon: {
     fontSize: FONTSIZE.size_20,
     color: Colors.White,
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
   },
   radioText: {
     fontFamily: Fontfamily.poppins_medium,
@@ -416,7 +423,7 @@ const styles = StyleSheet.create({
     fontFamily: Fontfamily.poppins_semibold,
     fontSize: FONTSIZE.size_16,
     color: Colors.White,
-    backgroundColor: Colors.Orange,
+    backgroundColor: Colors.Pink,
   },
 });
 

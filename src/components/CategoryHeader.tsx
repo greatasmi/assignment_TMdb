@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import {FONTSIZE, SPACING} from '../constant/theme/theme';
-
+import Images from '../constant/Images';
 import {Colors} from '../constant/Colors'
 import {Fontfamily} from '../constant/Fontfamily'
 const CategoryHeader = (props: any) => {

@@ -10,13 +10,31 @@ import details from '../../assets/images/details.png';
 import house from '../../assets/images/house.png';
 import profile from '../../assets/images/profile.png';
 import onesearch from '../../assets/images/onesearch.png';
-import Video from '../../assets/images/video.png';
+import Videos from '../../assets/images/video.png';
 import searching from '../../assets/images/searching.png';
 import avatar from '../../assets/images/avatar.png';
 import barcode from '../../assets/images/barcode.png';
+import Video from '../../assets/images/video.png';
+import tickets from '../../assets/images/tickets.png';
+import star from '../../assets/images/star.png';
+import stars from '../../assets/images/stars.png';
+import startone from '../../assets/images/starone.png';
+import rightarrow from '../../assets/images/right-arrow.png';
+import clock from '../../assets/images/clock.png';
+import radio from '../../assets/images/radio.png';
+import radioicon from  '../../assets/images/radioicon.png';
+import seat from '../../assets/images/seat.png';
 
 const Images = {
-
+    radio,
+    radioicon,
+    seat,
+    clock,
+    rightarrow,
+    star,
+    stars,
+    startone,
+    tickets,
     avatar,
     barcode,
     details,
@@ -25,6 +43,7 @@ const Images = {
     house,
     profile,
     Video,
+    Videos,
     light,
     dark,
     logo,

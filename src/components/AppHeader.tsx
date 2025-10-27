@@ -1,18 +1,25 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import CustomIcon from './CustomIcon';
+import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
+
 import {
   BORDERRADIUS,
   FONTSIZE,
   SPACING,
 } from '../constant/theme/theme';
+import Images from '../constant/Images';
 import {Colors} from '../constant/Colors'
 import {Fontfamily} from '../constant/Fontfamily'
 const AppHeader = (props: any) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.iconBG} onPress={() => props.action()}>
-        <CustomIcon name={props.name} style={styles.iconStyle} />
+        
+                <Image
+                  source={Images.logo}
+                  style={[styles.iconStyle, 
+                   ]}
+                />
+                
       </TouchableOpacity>
       <Text style={styles.headerText}>{props.header}</Text>
       <View style={styles.emptyContainer}></View>
@@ -27,8 +34,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   iconStyle: {
-    color: Colors.White,
-    fontSize: FONTSIZE.size_24,
+    width: FONTSIZE.size_24,
+    height: FONTSIZE.size_24,
+    tintColor: Colors.White,
   },
   headerText: {
     flex: 1,
@@ -47,7 +55,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: BORDERRADIUS.radius_20,
-    backgroundColor: Colors.Orange,
+    backgroundColor: Colors.Pink,
   },
 });
 

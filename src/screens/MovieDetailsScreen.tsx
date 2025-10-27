@@ -22,10 +22,9 @@ import { Colors } from '../constant/Colors';
 import { Fontfamily } from '../constant/Fontfamily';
 import AppHeader from '../components/AppHeader';
 import LinearGradient from 'react-native-linear-gradient';
-import CustomIcon from '../components/CustomIcon';
 import CategoryHeader from '../components/CategoryHeader';
 import CastCard from '../components/CastCard';
-
+import Images from '../constant/Images';
 const getMovieDetails = async (movieid: number) => {
   try {
     let response = await fetch(movieDetails(movieid));
@@ -85,7 +84,7 @@ const MovieDetailsScreen = ({navigation, route}: any) => {
           />
         </View>
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size={'large'} color={Colors.Orange} />
+          <ActivityIndicator size={'large'} color={Colors.Pink} />
         </View>
       </ScrollView>
     );
@@ -123,7 +122,7 @@ const MovieDetailsScreen = ({navigation, route}: any) => {
       </View>
 
       <View style={styles.timeContainer}>
-        <CustomIcon name="clock" style={styles.clockIcon} />
+        <Image source={Images.clock} style={styles.clockIcon} />
         <Text style={styles.runtimeText}>
           {Math.floor(movieData?.runtime / 60)}h{' '}
           {Math.floor(movieData?.runtime % 60)}m
@@ -146,7 +145,7 @@ const MovieDetailsScreen = ({navigation, route}: any) => {
 
       <View style={styles.infoContainer}>
         <View style={styles.rateContainer}>
-          <CustomIcon name="star" style={styles.starIcon} />
+          <Image source={Images.star} style={styles.starIcon} />
           <Text style={styles.runtimeText}>
             {movieData?.vote_average.toFixed(1)} ({movieData?.vote_count})
           </Text>
@@ -292,8 +291,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   starIcon: {
-    fontSize: FONTSIZE.size_20,
-    color: Colors.Yellow,
+    width: 20,
+    height: 20,
+    tintColor: Colors.Yellow,
   },
   descriptionText: {
     fontFamily: Fontfamily.poppins_light,
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     borderRadius: BORDERRADIUS.radius_25 * 2,
     paddingHorizontal: SPACING.space_24,
     paddingVertical: SPACING.space_10,
-    backgroundColor: Colors.Orange,
+    backgroundColor: Colors.Pink,
     fontFamily: Fontfamily.poppins_medium,
     fontSize: FONTSIZE.size_14,
     color: Colors.White,

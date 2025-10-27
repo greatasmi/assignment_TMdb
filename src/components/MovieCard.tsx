@@ -1,14 +1,14 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import {
   BORDERRADIUS,
   FONTSIZE,
   SPACING,
 } from '../constant/theme/theme';
-import CustomIcon from './CustomIcon';
+import Images from '../constant/Images';
 
-import {Colors} from '../constant/Colors'
-import {Fontfamily} from '../constant/Fontfamily'
+import { Colors } from '../constant/Colors'
+import { Fontfamily } from '../constant/Fontfamily'
 const genres: any = {
   28: 'Action',
   12: 'Adventure',
@@ -39,22 +39,36 @@ const MovieCard = (props: any) => {
           styles.container,
           props.shoudlMarginatedAtEnd
             ? props.isFirst
-              ? {marginLeft: SPACING.space_36}
+              ? { marginLeft: SPACING.space_36 }
               : props.isLast
-              ? {marginRight: SPACING.space_36}
-              : {}
+                ? { marginRight: SPACING.space_36 }
+                : {}
             : {},
-          props.shouldMarginatedAround ? {margin: SPACING.space_12} : {},
-          {maxWidth: props.cardWidth},
+          props.shouldMarginatedAround ? { margin: SPACING.space_12 } : {},
+          { maxWidth: props.cardWidth },
         ]}>
         <Image
-          style={[styles.cardImage, {width: props.cardWidth}]}
-          source={{uri: props.imagePath}}
+          style={[styles.cardImage, { width: props.cardWidth }]}
+          source={{ uri: props.imagePath }}
         />
 
         <View>
           <View style={styles.rateContainer}>
-            <CustomIcon name="star" style={styles.starIcon} />
+
+
+            <Image
+              source={Images.star}
+              style={{
+                width: FONTSIZE.size_20,
+                height: FONTSIZE.size_20,
+                tintColor: Colors.Yellow,
+                resizeMode: 'contain',
+              }}
+            />
+            <Text style={{ fontSize: FONTSIZE.size_14, color: Colors.White, marginTop: 4 }}>
+              Star
+            </Text>
+
             <Text style={styles.voteText}>
               {props.vote_average} ({props.vote_count})
             </Text>
@@ -106,7 +120,7 @@ const styles = StyleSheet.create({
   starIcon: {
     fontSize: FONTSIZE.size_20,
     color: Colors
-    .Yellow,
+      .Yellow,
   },
   voteText: {
     fontFamily: Fontfamily.poppins_medium,
@@ -131,6 +145,12 @@ const styles = StyleSheet.create({
     fontFamily: Fontfamily.poppins_regular,
     fontSize: FONTSIZE.size_10,
     color: Colors.WhiteRGBA75,
+  },
+  imageTitle: {
+    marginTop: 4,
+    color: Colors.White,
+    fontSize: FONTSIZE.size_12,
+    textAlign: 'center',
   },
 });
 

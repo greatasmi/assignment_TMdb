@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
   StyleSheet,
   TextInput,
+  Image,
   TouchableOpacity,
 } from 'react-native';
 import {
@@ -11,10 +12,10 @@ import {
   FONTSIZE,
   SPACING,
 } from '../constant/theme/theme';
-import CustomIcon from './CustomIcon';
+import Images from '../constant/Images';
 
-import {Colors} from '../constant/Colors'
-import {Fontfamily} from '../constant/Fontfamily'
+import { Colors } from '../constant/Colors'
+import { Fontfamily } from '../constant/Fontfamily'
 const InputHeader = (props: any) => {
   const [searchText, setSearchText] = useState<string>('');
   return (
@@ -29,11 +30,15 @@ const InputHeader = (props: any) => {
       <TouchableOpacity
         style={styles.searchIcon}
         onPress={() => props.searchFunction(searchText)}>
-        <CustomIcon
-          name="search"
-          color={Colors.Orange}
-          size={FONTSIZE.size_20}
-        />
+        <Image
+    source={Images.search}
+    style={{
+      width: FONTSIZE.size_20,
+      height: FONTSIZE.size_20,
+      tintColor: Colors.Pink, // use tintColor for changing image color
+    }}
+  />
+  <Text style={styles.imageTitle}>Search</Text>
       </TouchableOpacity>
     </View>
   );
@@ -60,6 +65,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: SPACING.space_10,
   },
+
+  imageTitle: {
+    marginTop: 4,
+    color: Colors.White,
+    fontSize: FONTSIZE.size_12,
+    textAlign: 'center',
+  },
+  
 });
 
 export default InputHeader;
