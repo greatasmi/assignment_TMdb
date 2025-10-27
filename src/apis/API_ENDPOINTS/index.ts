@@ -57,5 +57,15 @@ export const getMovieDetails = async (movieId: number) => {
   console.log('✅ Movie Details Fetched:', response.data.title);
   return response.data;
 };
-
+export const getMovieVideos = async (movieID: number) => {
+  try {
+    const res = await axios.get(`${BASE_URL}/movie/${movieID}/videos`, {
+      params: { api_key: API_KEY },
+    });
+    return res.data.results;
+  } catch (err) {
+    console.error('❌ Error fetching movie videos:', err);
+    return [];
+  }
+};
 export { IMAGE_PATH };

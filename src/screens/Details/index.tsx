@@ -7,7 +7,7 @@ import {
   Dimensions,
   ActivityIndicator,
   View,
-  Modal,
+  Modal,TouchableOpacity,
 } from 'react-native';
 import {NavigationProp, RouteProp} from '@react-navigation/native';
 import {IMovieDetails} from '../../types/interfaces';
@@ -24,7 +24,8 @@ interface IProps {
   route: RouteProp<any, any>;
 }
 
-const Details: React.FC<IProps> = ({route}) => {
+const Details: React.FC<IProps> = ({ navigation, route }) => {
+
   const {movieID} = route.params as {movieID: number};
   const [details, setDetails] = useState<IMovieDetails>({} as IMovieDetails);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -98,6 +99,16 @@ const Details: React.FC<IProps> = ({route}) => {
                     new Date(details.release_date).toDateString()}
                 </Text>
               )}
+<View style={styles.bookingContainer}>
+                <Text style={styles.priceText}>🎟️ Tickets starting at $12</Text>
+                <TouchableOpacity
+                  style={styles.bookingButton}
+                  onPress={() => navigation.navigate('Booking', { movieID: details.id })}
+                  activeOpacity={0.8}>
+                  <Text style={styles.bookingButtonText}>Book Now</Text>
+                </TouchableOpacity>
+              </View>
+
             </View>
           </ScrollView>
 
@@ -178,4 +189,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+    bookingContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  priceText: {
+    fontSize: 14,
+    color: '#777',
+    marginBottom: 8,
+  },
+  bookingButton: {
+    backgroundColor: '#e50914',
+    paddingVertical: 12,
+    paddingHorizontal: 40,
+    borderRadius: 10,
+    elevation: 3,
+  },
+  bookingButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+    textTransform: 'uppercase',
+  },
+
 });

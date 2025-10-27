@@ -24,6 +24,7 @@ import MovieTabs from '../../components/MovieTabs';
 import Images from '../../constant/Images';
 import { useTheme } from '../../constant/themes/useTheme'; // ✅ Fixed path
 import { Tab } from "../../types/interfaces";
+import BottomTabNavigator from '../../navigation/StackNavigator/BottomTabNavigator';
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'HomeScreen'
@@ -106,24 +107,27 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       />
 
       {/* Tabs */}
-      <MovieTabs
-  movies={nowPlaying}
+      {/* <MovieTabs
   tabs={[
     { id: 1, title: 'Now Playing' },
     { id: 2, title: 'Popular' },
     { id: 3, title: 'Top Rated' },
     { id: 4, title: 'Upcoming' },
   ]}
-  onSelect={(id) => console.log('Tab selected:', id)}
-/>
+  onSelect={(id) => {
+    console.log('Tab selected:', id);
+    // Optional: You can filter which movie list to show dynamically
+  }}
+/> */}
 
 
 
 
 
-      <Text style={[styles.header, { color: colors.text }]}>
+
+      {/* <Text style={[styles.header, { color: colors.text }]}>
         What do you want to watch?
-      </Text>
+      </Text> */}
 
       {/* 🎬 Now Playing */}
       <View style={styles.section}>

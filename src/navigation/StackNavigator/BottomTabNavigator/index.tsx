@@ -1,10 +1,11 @@
+// src/navigation/StackNavigator/BottomTabNavigator.tsx
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text, Image } from 'react-native';
+import { Image } from 'react-native';
 import { useTheme } from '../../../constant/themes/useTheme';
-import Images from '../../../constant/Images'; // your images index file
+import Images from '../../../constant/Images';
 
-// Screens placeholders (replace with your actual screens)
+// Screens
 import HomeScreen from '../../../screens/HomeScreen';
 import DetailScreen from '../../../screens/Details';
 import ProfileScreen from '../../../screens/ProfileScreen';
@@ -15,6 +16,7 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   const { theme } = useTheme();
+
   const colors = theme === 'light'
     ? { background: '#FFFFFF', text: '#000000' }
     : { background: '#000000', text: '#FFFFFF' };
@@ -28,7 +30,7 @@ const BottomTabNavigator = () => {
           borderTopColor: colors.text,
         },
         tabBarActiveTintColor: colors.text,
-        tabBarInactiveTintColor: colors.text,
+        tabBarInactiveTintColor: '#808080',
       }}
     >
       <Tab.Screen
@@ -36,63 +38,37 @@ const BottomTabNavigator = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Image
-              source={Images.house}
-              style={{ width: size, height: size, tintColor: color }}
-              resizeMode="contain"
-            />
+            <Image source={Images.house} style={{ width: size, height: size, tintColor: color }} />
           ),
         }}
       />
-      <Tab.Screen
-        name="Detail"
-        component={DetailScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Image
-              source={Images.details}
-              style={{ width: size, height: size, tintColor: color }}
-              resizeMode="contain"
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Image
-              source={Images.profile}
-              style={{ width: size, height: size, tintColor: color }}
-              resizeMode="contain"
-            />
-          ),
-        }}
-      />
+
       <Tab.Screen
         name="Search"
         component={SearchScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Image
-              source={Images.searching}
-              style={{ width: size, height: size, tintColor: color }}
-              resizeMode="contain"
-            />
+            <Image source={Images.searching} style={{ width: size, height: size, tintColor: color }} />
           ),
         }}
       />
+
       <Tab.Screen
         name="Videos"
         component={VideosScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Image
-              source={Images.Video}
-              style={{ width: size, height: size, tintColor: color }}
-              resizeMode="contain"
-            />
+            <Image source={Images.Video} style={{ width: size, height: size, tintColor: color }} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Image source={Images.profile} style={{ width: size, height: size, tintColor: color }} />
           ),
         }}
       />
