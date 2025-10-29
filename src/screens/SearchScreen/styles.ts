@@ -6,7 +6,7 @@ const { width } = Dimensions.get('window');
 export default StyleSheet.create({
   
   container: { flex: 1, padding: 16 },
-  text: { fontSize: 16, textAlign: 'center', marginTop: 40 },
+  text: { fontSize: 16, textAlign: 'center', marginTop: 10, color: 'white' },
   card: {
     flex: 1,
     margin: 8,

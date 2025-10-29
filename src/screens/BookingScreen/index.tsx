@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
+import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';
 const BookingScreen = ({ navigation, route }: any) => {
   const seatPrice = 5.0;
@@ -81,35 +84,35 @@ const BookingScreen = ({ navigation, route }: any) => {
   const times = ['10:00 AM', '12:30 PM', '3:00 PM', '6:00 PM', '9:00 PM'];
 
   // Confirm booking
-  const confirmBooking = async () => {
-    if (!selectedSeats.length || !selectedDate || !selectedTime) {
-      ToastAndroid.show('Select seats, date and time!', ToastAndroid.SHORT);
-      return;
-    }
+const confirmBooking = async () => {
+  if (!selectedSeats.length || !selectedDate || !selectedTime) {
+    ToastAndroid.show('Select seats, date and time!', ToastAndroid.SHORT);
+    return;
+  }
 
-    const bookingData = {
-      id: Date.now(),
-      movieTitle: route?.params?.title || 'Unknown Movie',
-      seats: selectedSeats,
-      date: selectedDate,
-      time: selectedTime,
-      totalPrice,
-    };
-
-    try {
-      const existing = await AsyncStorage.getItem('bookings');
-      const bookings = existing ? JSON.parse(existing) : [];
-      bookings.push(bookingData);
-      await AsyncStorage.setItem('bookings', JSON.stringify(bookings));
-
-      ToastAndroid.show('🎟 Booking confirmed!', ToastAndroid.SHORT);
-
-      // Navigate to Ticket/Booking detail screen
-      navigation.navigate('BookingDetail');
-    } catch (error) {
-      console.error('Error storing booking', error);
-    }
+  const bookingData = {
+    id: Date.now(),
+    movieId: route?.params?.movieID, // ✅ save movieID
+    movieTitle: route?.params?.title || 'Unknown Movie', // ✅ title passed from Details
+    seats: selectedSeats,
+    date: selectedDate,
+    time: selectedTime,
+    totalPrice,
   };
+
+  try {
+    const existing = await AsyncStorage.getItem('bookings');
+    const bookings = existing ? JSON.parse(existing) : [];
+    bookings.push(bookingData);
+    await AsyncStorage.setItem('bookings', JSON.stringify(bookings));
+
+    ToastAndroid.show('🎟 Booking confirmed!', ToastAndroid.SHORT);
+    navigation.navigate('BookingDetail');
+  } catch (error) {
+    console.error('Error storing booking', error);
+  }
+};
+
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

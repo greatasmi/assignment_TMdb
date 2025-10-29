@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { searchMovies, IMAGE_PATH } from '../../apis/API_ENDPOINTS';
 import SearchBar from '../../components/SearchBar'; // ✅ custom search bar component
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from './styles';
 
@@ -95,7 +96,7 @@ const SearchScreen = ({ navigation }: any) => {
           renderItem={renderItem}
           numColumns={2}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 40 }}
+          contentContainerStyle={{ paddingBottom: 10 }}
         />
       ) : (
         <Text style={styles.text}>

@@ -37,5 +37,22 @@ export default StyleSheet.create({
     paddingHorizontal: 50,
     borderRadius: 25,
   },
+  
+
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#000', // dark background for movie details
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    marginTop: 10,
+    color: '#ccc',
+    fontSize: wp(4),
+  },
+  scrollContent: {
+    paddingBottom: hp(5),
+  },
+
   bookingButtonText: { color: '#fff', fontWeight: 'bold', textTransform: 'uppercase' },
 });

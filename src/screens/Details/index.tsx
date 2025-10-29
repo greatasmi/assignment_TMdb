@@ -2,21 +2,25 @@ import React, { useEffect, useState } from 'react';
 import {
   Image,
   ScrollView,
-  StyleSheet,
   Text,
   Dimensions,
   ActivityIndicator,
   View,
-  Modal,
   Alert,
   TouchableOpacity,
   Linking,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationProp, RouteProp } from '@react-navigation/native';
 import { IMovieDetails } from '../../types/interfaces';
-import { IMAGE_PATH, getMovieDetails, getMovieTrailer } from '../../apis/API_ENDPOINTS';
+import {
+  IMAGE_PATH,
+  getMovieDetails,
+  getMovieTrailer,
+} from '../../apis/API_ENDPOINTS';
 import Images from '../../constant/Images';
 import styles from './styles';
+
 const height = Dimensions.get('window').height;
 
 interface IProps {
@@ -29,10 +33,9 @@ const Details: React.FC<IProps> = ({ navigation, route }) => {
 
   const [details, setDetails] = useState<IMovieDetails>({} as IMovieDetails);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
 
-  // Fetch movie details
+  // ✅ Fetch movie details
   useEffect(() => {
     (async () => {
       try {
@@ -46,29 +49,40 @@ const Details: React.FC<IProps> = ({ navigation, route }) => {
     })();
   }, [movieID]);
 
-  // Fetch trailer
- const handlePlayTrailer = async () => {
-  try {
-    const url = await getMovieTrailer(movieID);
-    if (url) {
-      setTrailerUrl(url);
-      Linking.openURL(url);
-    } else {
-      Alert.alert('No Trailer Available', 'No trailer is available for this movie.');
+  // ✅ Handle trailer playback
+  const handlePlayTrailer = async () => {
+    try {
+      const url = await getMovieTrailer(movieID);
+      if (url) {
+        setTrailerUrl(url);
+        Linking.openURL(url);
+      } else {
+        Alert.alert('No Trailer Available', 'No trailer is available for this movie.');
+      }
+    } catch (error) {
+      console.error('❌ Error fetching trailer:', error);
+      Alert.alert('Error', 'Something went wrong while loading the trailer.');
     }
-  } catch (error) {
-    console.error('❌ Error fetching trailer:', error);
-    Alert.alert('Error', 'Something went wrong while loading the trailer.');
+  };
+
+  // ✅ Loader
+  if (!isLoaded) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <ActivityIndicator size="large" color="#E50914" />
+        <Text style={styles.loadingText}>Loading movie details...</Text>
+      </SafeAreaView>
+    );
   }
-};
 
-
-  if (!isLoaded) return <ActivityIndicator size="large" style={{ flex: 1 }} />;
-
+  // ✅ Main UI
   return (
-    <View style={{ flex: 1 }}>
-      <ScrollView>
-        {/* Movie Poster */}
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {/* 🎬 Movie Poster */}
         <View style={styles.imageContainer}>
           <Image
             source={
@@ -81,11 +95,11 @@ const Details: React.FC<IProps> = ({ navigation, route }) => {
           />
         </View>
 
-        {/* Content */}
+        {/* 📝 Movie Details Content */}
         <View style={styles.container}>
           <Text style={styles.movieTitle}>{details.title || 'No Title'}</Text>
 
-          {/* Genres */}
+          {/* 🎭 Genres */}
           {details?.genres && (
             <View style={styles.genresContainer}>
               {details.genres.map((genre) => (
@@ -96,27 +110,29 @@ const Details: React.FC<IProps> = ({ navigation, route }) => {
             </View>
           )}
 
-          {/* Rating */}
+          {/* ⭐ Rating */}
           {details?.vote_average && (
             <Text style={styles.rating}>⭐ {details.vote_average.toFixed(1)} / 10</Text>
           )}
 
-          {/* Tagline */}
-          {details?.tagline ? <Text style={styles.tagline}>"{details.tagline}"</Text> : null}
+          {/* 🗣️ Tagline */}
+          {details?.tagline ? (
+            <Text style={styles.tagline}>"{details.tagline}"</Text>
+          ) : null}
 
-          {/* Overview */}
+          {/* 📖 Overview */}
           <Text style={styles.overview}>
             {details.overview || 'No overview available.'}
           </Text>
 
-          {/* Release Date */}
+          {/* 📅 Release Date */}
           {details?.release_date && (
             <Text style={styles.releaseDate}>
               Release date: {new Date(details.release_date).toDateString()}
             </Text>
           )}
 
-          {/* ▶️ Play Trailer Button */}
+          {/* ▶️ Play Trailer */}
           <TouchableOpacity
             style={styles.playButton}
             onPress={handlePlayTrailer}
@@ -125,19 +141,24 @@ const Details: React.FC<IProps> = ({ navigation, route }) => {
             <Text style={styles.playButtonText}>▶️ Watch Trailer</Text>
           </TouchableOpacity>
 
-          {/* 🎟️ Booking */}
+          {/* 🎟️ Booking Section */}
           <View style={styles.bookingContainer}>
             <Text style={styles.priceText}>Tickets starting at $5</Text>
             <TouchableOpacity
               style={styles.bookingButton}
-              onPress={() => navigation.navigate('Booking', { movieID: details.id })}
-            >
+              onPress={() =>
+                navigation.navigate('Booking', {
+                  movieID: details.id,
+  title: details.title, // ✅ pass movie title
+                })
+              }>
               <Text style={styles.bookingButtonText}>Book Now</Text>
             </TouchableOpacity>
+
           </View>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 

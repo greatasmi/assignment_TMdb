@@ -31,20 +31,32 @@ export default StyleSheet.create({
     marginTop: 10,
     fontSize: wp(4),
   },
+  safeArea: {
+    flex: 1,
+  },
+  scrollContainer: {
+    flex: 1,
+  },
+
+  searchSection: {
+    marginTop: hp(1),
+    paddingHorizontal: wp(3),
+  },
+  section: {
+    marginTop: hp(3),
+    paddingHorizontal: wp(3),
+  },
+  title: {
+    fontSize: wp(5),
+    fontWeight: '700',
+    marginBottom: hp(1),
+  },
+
   header: {
     fontSize: wp(5),
     marginVertical: hp(2),
     fontWeight: '600',
   },
-  section: {
-    marginBottom: hp(6),
-  },
-  title: {
-    fontSize: wp(4),
-    marginBottom: hp(4),
-    fontWeight: '600',
-  },
-  searchSection: {
-    marginVertical: hp(2),
-  },
+
+  
 });

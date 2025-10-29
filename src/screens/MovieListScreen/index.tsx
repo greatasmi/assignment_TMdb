@@ -7,6 +7,7 @@ import { API_KEY } from "../../apis/API_KEY";
 import { BASE_URL } from "../../apis/BASE_URL";
 import styles from './styles';
 
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default function MovieListScreen() {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null);
