@@ -7,19 +7,18 @@ import Images from '../../../constant/Images';
 
 // Screens
 import HomeScreen from '../../../screens/HomeScreen';
-import DetailScreen from '../../../screens/Details';
-import ProfileScreen from '../../../screens/ProfileScreen';
 import SearchScreen from '../../../screens/SearchScreen';
 import VideosScreen from '../../../screens/VideosScreen';
+import ProfileScreen from '../../../screens/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   const { theme } = useTheme();
-
-  const colors = theme === 'light'
-    ? { background: '#FFFFFF', text: '#000000' }
-    : { background: '#000000', text: '#FFFFFF' };
+  const colors =
+    theme === 'light'
+      ? { background: '#FFFFFF', text: '#000000' }
+      : { background: '#000000', text: '#FFFFFF' };
 
   return (
     <Tab.Navigator
@@ -38,37 +37,46 @@ const BottomTabNavigator = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Image source={Images.house} style={{ width: size, height: size, tintColor: color }} />
+            <Image
+              source={Images.house}
+              style={{ width: size, height: size }}
+            />
           ),
         }}
       />
-
       <Tab.Screen
         name="Search"
         component={SearchScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Image source={Images.searching} style={{ width: size, height: size, tintColor: color }} />
+            <Image
+              source={Images.searching}
+              style={{ width: size, height: size }}
+            />
           ),
         }}
       />
-
       <Tab.Screen
         name="Videos"
         component={VideosScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Image source={Images.Video} style={{ width: size, height: size, tintColor: color }} />
+            <Image
+              source={Images.Video}
+              style={{ width: size, height: size }}
+            />
           ),
         }}
       />
-
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Image source={Images.profile} style={{ width: size, height: size, tintColor: color }} />
+            <Image
+              source={Images.avatar}
+              style={{ width: size, height: size }}
+            />
           ),
         }}
       />

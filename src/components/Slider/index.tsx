@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';
-
+import styles from './styles';
 const { height } = Dimensions.get('screen');
 
 interface SliderProps {
@@ -32,8 +32,3 @@ const Slider: React.FC<SliderProps> = ({ images = [
 
 export default Slider;
 
-const styles = StyleSheet.create({
-  sliderDot: {
-    height: 0,
-  },
-});

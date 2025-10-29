@@ -19,12 +19,12 @@ import {
 import MovieCard from '../../components/MovieCard';
 import { wp, hp } from '../../components/Responsive';
 import NavHeader from '../../components/NavHeader';
-import SearchBar from '../../components/SearchBar';
-import MovieTabs from '../../components/MovieTabs';
+import SearchScreen from '../SearchScreen';
 import Images from '../../constant/Images';
 import { useTheme } from '../../constant/themes/useTheme'; // ✅ Fixed path
-import { Tab } from "../../types/interfaces";
-import BottomTabNavigator from '../../navigation/StackNavigator/BottomTabNavigator';
+
+import styles from './styles';
+
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'HomeScreen'
@@ -88,46 +88,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       <View style={styles.headerRow}>
         <NavHeader />
 
-        {/* Theme Toggle Button */}
-        <TouchableOpacity
-          style={[styles.themeButton, { backgroundColor: colors.surface }]}
-          onPress={toggleTheme}
-        >
-          <Image
-            source={theme === 'dark' ? Images.light : Images.dark}
-            style={styles.themeIcon}
-          />
-        </TouchableOpacity>
+      
       </View>
-
-      {/* Search Bar */}
-      <SearchBar
-        value={''}
-        onChangeText={() => { }}
-      />
-
-      {/* Tabs */}
-      {/* <MovieTabs
-  tabs={[
-    { id: 1, title: 'Now Playing' },
-    { id: 2, title: 'Popular' },
-    { id: 3, title: 'Top Rated' },
-    { id: 4, title: 'Upcoming' },
-  ]}
-  onSelect={(id) => {
-    console.log('Tab selected:', id);
-    // Optional: You can filter which movie list to show dynamically
-  }}
-/> */}
-
-
-
-
-
-
-      {/* <Text style={[styles.header, { color: colors.text }]}>
-        What do you want to watch?
-      </Text> */}
+ {/* ✅ Directly render SearchScreen at the top */}
+      <View style={styles.searchSection}>
+        <SearchScreen navigation={navigation} />
+      </View>
 
       {/* 🎬 Now Playing */}
       <View style={styles.section}>
@@ -197,46 +163,3 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: wp(4),
-  },
-  headerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  themeButton: {
-    padding: 6,
-    borderRadius: 20,
-  },
-  themeIcon: {
-    width: wp(7),
-    height: wp(7),
-    resizeMode: 'contain',
-  },
-  loader: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  loadingText: {
-    marginTop: 10,
-    fontSize: wp(4),
-  },
-  header: {
-    fontSize: wp(5),
-    marginVertical: hp(2),
-    fontWeight: '600',
-  },
-  section: {
-    marginTop: hp(2),
-  },
-  title: {
-    fontSize: wp(4),
-    marginBottom: hp(1),
-    fontWeight: '600',
-  },
-});

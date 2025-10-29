@@ -10,7 +10,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { API_KEY } from '../../apis/API_KEY'; // Make sure you have your API key here
-
+import styles from './styles';
 const BookingDetail = ({ navigation }: any) => {
   const [bookings, setBookings] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -100,49 +100,3 @@ const BookingDetail = ({ navigation }: any) => {
 };
 
 export default BookingDetail;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#111',
-    padding: 16,
-  },
-  heading: {
-    color: '#fff',
-    fontSize: 22,
-    fontWeight: '700',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  card: {
-    backgroundColor: '#222',
-    borderRadius: 10,
-    padding: 12,
-    marginBottom: 12,
-  },
-  movieTitle: {
-    color: '#ff9800',
-    fontSize: 18,
-    fontWeight: '700',
-  },
-  detail: {
-    color: '#ccc',
-    marginTop: 4,
-  },
-  noBookings: {
-    color: '#888',
-    textAlign: 'center',
-    marginTop: 40,
-  },
-  backButton: {
-    backgroundColor: '#ff9800',
-    padding: 12,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  backText: {
-    color: '#fff',
-    fontWeight: '700',
-  },
-});
