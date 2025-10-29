@@ -96,7 +96,7 @@ const SearchScreen = ({ navigation }: any) => {
           renderItem={renderItem}
           numColumns={2}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 40 }}
+          contentContainerStyle={{ paddingBottom: 10 }}
         />
       ) : (
         <Text style={styles.text}>

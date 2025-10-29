@@ -31,7 +31,7 @@ export type RootStackParamList = {
   BookingScreen: undefined;
   Booking: undefined;
   BottomTabs: undefined;
-  SearchScreen: undefined;
+  SearchScreen: { query: string };
   ProfileScreen: undefined;
   
   VideoScreen: {movieID: number};

@@ -146,10 +146,15 @@ const Details: React.FC<IProps> = ({ navigation, route }) => {
             <Text style={styles.priceText}>Tickets starting at $5</Text>
             <TouchableOpacity
               style={styles.bookingButton}
-              onPress={() => navigation.navigate('Booking', { movieID: details.id })}
-            >
+              onPress={() =>
+                navigation.navigate('Booking', {
+                  movieID: details.id,
+  title: details.title, // ✅ pass movie title
+                })
+              }>
               <Text style={styles.bookingButtonText}>Book Now</Text>
             </TouchableOpacity>
+
           </View>
         </View>
       </ScrollView>
