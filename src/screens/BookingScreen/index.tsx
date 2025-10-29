@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
+import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';
 const BookingScreen = ({ navigation, route }: any) => {
   const seatPrice = 5.0;

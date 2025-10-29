@@ -6,6 +6,8 @@ import { useTheme } from '../../constant/themes/useTheme';
 import { getMovieVideos } from '../../apis/API_ENDPOINTS'; // API for video fetching
 import { RouteProp, NavigationProp } from '@react-navigation/native';
 import styles from './styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 interface IProps {
   navigation: NavigationProp<any>;
   route: RouteProp<any, any>;

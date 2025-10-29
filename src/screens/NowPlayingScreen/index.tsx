@@ -12,6 +12,9 @@ import {
 import { getNowPlayingMovies, IMAGE_PATH } from '../../apis/API_ENDPOINTS';
 import PlayButton from '../../components/PlayButton';
 import styles from './styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+
 
 const NowPlayingScreen = () => {
   const [movies, setMovies] = useState<any[]>([]);

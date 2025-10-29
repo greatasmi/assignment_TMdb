@@ -11,6 +11,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { API_KEY } from '../../apis/API_KEY'; // Make sure you have your API key here
 import styles from './styles';
+
+import { SafeAreaView } from 'react-native-safe-area-context';
 const BookingDetail = ({ navigation }: any) => {
   const [bookings, setBookings] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

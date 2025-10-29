@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { searchMovies, IMAGE_PATH } from '../../apis/API_ENDPOINTS';
 import SearchBar from '../../components/SearchBar'; // ✅ custom search bar component
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from './styles';
 

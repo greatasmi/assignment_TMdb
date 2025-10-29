@@ -12,6 +12,9 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '../../constant/themes/useTheme';
 import Images from '../../constant/Images'; // Your central image file
+
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import styles from './styles';
 interface Booking {
   movieTitle: string;
