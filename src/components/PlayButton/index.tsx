@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet } from 'react-native';
 import Images from '../../constant/Images'; 
-
+import styles from './styles';
 interface IProps {
   setModalVisible: (value: boolean) => void;
 }
@@ -15,15 +15,3 @@ const PlayButton: React.FC<IProps> = ({ setModalVisible }) => {
 };
 
 export default PlayButton;
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  playButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 50,
-  },
-});

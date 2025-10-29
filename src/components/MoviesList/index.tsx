@@ -3,7 +3,7 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {NavigationProp} from '@react-navigation/native';
 import {IMovie} from '../../types/interfaces';
 import MovieCard from '../MovieCard';
-
+import styles from './styles';
 interface IProps {
   movies: IMovie[];
   title: string;
@@ -27,14 +27,3 @@ const List = ({movies, title, navigation}: IProps) => {
 };
 
 export default List;
-
-const styles = StyleSheet.create({
-  listContainer: {
-    marginTop: 10,
-  },
-  listHeading: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    paddingBottom: 10,
-  },
-});

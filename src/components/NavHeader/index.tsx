@@ -6,7 +6,7 @@ import { RootStackParamList } from '../../types/interfaces';
 import { wp, hp } from '../Responsive';
 import Images from '../../constant/Images';
 import { useTheme } from '../../constant/themes/useTheme';
-
+import styles from './styles';
 interface NavHeaderProps {
   title?: string;
   showLogo?: boolean;
@@ -43,47 +43,14 @@ const NavHeader: React.FC<NavHeaderProps> = ({
       {/* 🧾 Title */}
       <Text style={[styles.title, { color: textColor }]}>{title}</Text>
    
-      <TouchableOpacity onPress={toggleTheme} style={styles.themeButton}>
+      {/* <TouchableOpacity onPress={toggleTheme} style={styles.themeButton}>
         <Image
           source={theme === 'dark' ? Images.light : Images.dark}
           style={styles.themeIcon}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
 
 export default NavHeader;
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: hp(2),
-    paddingHorizontal: wp(4),
-  },
-  backButton: {
-    marginRight: wp(3),
-  },
-  backText: {
-    fontSize: wp(4),
-    fontWeight: '500',
-  },
-  logo: {
-    width: wp(10),
-    height: wp(10),
-    marginRight: wp(2),
-  },
-  title: {
-    fontSize: wp(5),
-    fontWeight: '700',
-  },
-  themeButton: {
-    marginLeft: 'auto',
-    padding: wp(1),
-  },
-  themeIcon: {
-    width: wp(6),
-    height: wp(6),
-  },
-});

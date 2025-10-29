@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   ScrollView,
@@ -7,16 +7,16 @@ import {
   Dimensions,
   ActivityIndicator,
   View,
-  Modal,TouchableOpacity,
+  Modal,
+  Alert,
+  TouchableOpacity,
+  Linking,
 } from 'react-native';
-import {NavigationProp, RouteProp} from '@react-navigation/native';
-import {IMovieDetails} from '../../types/interfaces';
-import {IMAGE_PATH} from '../../apis/API_ENDPOINTS';
-import {getMovieDetails} from '../../apis/API_ENDPOINTS';
-import PlayButton from '../../components/PlayButton';
-import VideoComponent from '../../components/VideoComponent';
-import Images from '../../constant/Images'; // ✅ central image import
-
+import { NavigationProp, RouteProp } from '@react-navigation/native';
+import { IMovieDetails } from '../../types/interfaces';
+import { IMAGE_PATH, getMovieDetails, getMovieTrailer } from '../../apis/API_ENDPOINTS';
+import Images from '../../constant/Images';
+import styles from './styles';
 const height = Dimensions.get('window').height;
 
 interface IProps {
@@ -25,192 +25,120 @@ interface IProps {
 }
 
 const Details: React.FC<IProps> = ({ navigation, route }) => {
+  const { movieID } = route.params as { movieID: number };
 
-  const {movieID} = route.params as {movieID: number};
   const [details, setDetails] = useState<IMovieDetails>({} as IMovieDetails);
   const [isLoaded, setIsLoaded] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
 
+  // Fetch movie details
   useEffect(() => {
     (async () => {
       try {
         const res = await getMovieDetails(movieID);
-        if (res) setDetails(res);
+        setDetails(res);
       } catch (err) {
-        console.error('Error fetching details:', err);
+        console.error('❌ Error fetching details:', err);
       } finally {
         setIsLoaded(true);
       }
     })();
   }, [movieID]);
 
+  // Fetch trailer
+ const handlePlayTrailer = async () => {
+  try {
+    const url = await getMovieTrailer(movieID);
+    if (url) {
+      setTrailerUrl(url);
+      Linking.openURL(url);
+    } else {
+      Alert.alert('No Trailer Available', 'No trailer is available for this movie.');
+    }
+  } catch (error) {
+    console.error('❌ Error fetching trailer:', error);
+    Alert.alert('Error', 'Something went wrong while loading the trailer.');
+  }
+};
+
+
+  if (!isLoaded) return <ActivityIndicator size="large" style={{ flex: 1 }} />;
+
   return (
-    <>
-      {isLoaded ? (
-        <View>
-          <ScrollView>
-            <View style={styles.imageContainer}>
-              <Image
-                source={
-                  details?.poster_path
-                    ? {uri: `${IMAGE_PATH}${details.poster_path}`}
-                    : Images.movie_poster
-                }
-                resizeMode="cover"
-                style={styles.image}
-              />
-              {!details?.poster_path && (
-                <Text style={styles.movieTitleAbsolute}>
-                  {details.title || 'No data'}
-                </Text>
-              )}
-            </View>
-
-            <View style={styles.container}>
-              <View style={styles.playButton}>
-                <PlayButton setModalVisible={setModalVisible} />
-              </View>
-
-              <Text style={styles.movieTitle}>{details.title || 'No data'}</Text>
-
-              {details?.genres && (
-                <View style={styles.genresContainer}>
-                  {details.genres.map(genre => (
-                    <Text style={styles.genre} key={genre.id}>
-                      {genre.name}
-                    </Text>
-                  ))}
-                </View>
-              )}
-
-              {details?.vote_average && (
-                <Text style={styles.rating}>
-                  {details.vote_average.toFixed(1)}/10
-                </Text>
-              )}
-
-              <Text style={styles.overview}>
-                {details?.overview || 'No overview available.'}
-              </Text>
-
-              {details?.release_date && (
-                <Text style={styles.releaseDate}>
-                  {'Release date: ' +
-                    new Date(details.release_date).toDateString()}
-                </Text>
-              )}
-<View style={styles.bookingContainer}>
-                <Text style={styles.priceText}>🎟️ Tickets starting at $12</Text>
-                <TouchableOpacity
-                  style={styles.bookingButton}
-                  onPress={() => navigation.navigate('Booking', { movieID: details.id })}
-                  activeOpacity={0.8}>
-                  <Text style={styles.bookingButtonText}>Book Now</Text>
-                </TouchableOpacity>
-              </View>
-
-            </View>
-          </ScrollView>
-
-          <Modal
-            animationType="slide"
-            supportedOrientations={['portrait', 'landscape']}
-            visible={modalVisible}>
-            <View style={styles.videoModal}>
-              <VideoComponent setModalVisible={setModalVisible} />
-            </View>
-          </Modal>
+    <View style={{ flex: 1 }}>
+      <ScrollView>
+        {/* Movie Poster */}
+        <View style={styles.imageContainer}>
+          <Image
+            source={
+              details?.poster_path
+                ? { uri: `${IMAGE_PATH}${details.poster_path}` }
+                : Images.movie_poster
+            }
+            resizeMode="cover"
+            style={styles.image}
+          />
         </View>
-      ) : (
-        <ActivityIndicator size="large" />
-      )}
-    </>
+
+        {/* Content */}
+        <View style={styles.container}>
+          <Text style={styles.movieTitle}>{details.title || 'No Title'}</Text>
+
+          {/* Genres */}
+          {details?.genres && (
+            <View style={styles.genresContainer}>
+              {details.genres.map((genre) => (
+                <Text key={genre.id} style={styles.genre}>
+                  {genre.name}
+                </Text>
+              ))}
+            </View>
+          )}
+
+          {/* Rating */}
+          {details?.vote_average && (
+            <Text style={styles.rating}>⭐ {details.vote_average.toFixed(1)} / 10</Text>
+          )}
+
+          {/* Tagline */}
+          {details?.tagline ? <Text style={styles.tagline}>"{details.tagline}"</Text> : null}
+
+          {/* Overview */}
+          <Text style={styles.overview}>
+            {details.overview || 'No overview available.'}
+          </Text>
+
+          {/* Release Date */}
+          {details?.release_date && (
+            <Text style={styles.releaseDate}>
+              Release date: {new Date(details.release_date).toDateString()}
+            </Text>
+          )}
+
+          {/* ▶️ Play Trailer Button */}
+          <TouchableOpacity
+            style={styles.playButton}
+            onPress={handlePlayTrailer}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.playButtonText}>▶️ Watch Trailer</Text>
+          </TouchableOpacity>
+
+          {/* 🎟️ Booking */}
+          <View style={styles.bookingContainer}>
+            <Text style={styles.priceText}>Tickets starting at $5</Text>
+            <TouchableOpacity
+              style={styles.bookingButton}
+              onPress={() => navigation.navigate('Booking', { movieID: details.id })}
+            >
+              <Text style={styles.bookingButtonText}>Book Now</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
 export default Details;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  imageContainer: {
-    height: height / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
-    height: height / 2,
-    width: '100%',
-  },
-  movieTitleAbsolute: {
-    position: 'absolute',
-    width: 80,
-    textAlign: 'center',
-  },
-  movieTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginVertical: 10,
-  },
-  genresContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignContent: 'center',
-  },
-  genre: {
-    backgroundColor: '#e6e6e6',
-    padding: 5,
-    margin: 3,
-    borderRadius: 4,
-  },
-  rating: {
-    fontWeight: 'bold',
-    marginTop: 10,
-    color: '#ff8c00',
-  },
-  overview: {
-    padding: 8,
-    textAlign: 'center',
-  },
-  releaseDate: {
-    fontWeight: 'bold',
-  },
-  playButton: {
-    position: 'absolute',
-    top: -20,
-    right: 6,
-  },
-  videoModal: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-    bookingContainer: {
-    marginTop: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  priceText: {
-    fontSize: 14,
-    color: '#777',
-    marginBottom: 8,
-  },
-  bookingButton: {
-    backgroundColor: '#e50914',
-    paddingVertical: 12,
-    paddingHorizontal: 40,
-    borderRadius: 10,
-    elevation: 3,
-  },
-  bookingButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-    textTransform: 'uppercase',
-  },
-
-});

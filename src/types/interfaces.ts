@@ -20,6 +20,8 @@ export interface IMovieDetails extends IMovie {
   belongs_to_collection?: null | object;
   genres: Array<{ id: number; name: string }>;
   budget: number;
+  tagline: number;
+  alert: string;
 }
 
 // 🧭 Navigation types
@@ -29,6 +31,10 @@ export type RootStackParamList = {
   BookingScreen: undefined;
   Booking: undefined;
   BottomTabs: undefined;
+  SearchScreen: undefined;
+  ProfileScreen: undefined;
+  
+  VideoScreen: {movieID: number};
   BookingDetail: undefined;
   Details: { movieID: number };
 };

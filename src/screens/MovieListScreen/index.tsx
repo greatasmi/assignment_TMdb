@@ -5,7 +5,7 @@ import MovieTabs from "../../components/MovieTabs";
 import { IMovie } from "../../types/interfaces"; // ✅ import interface
 import { API_KEY } from "../../apis/API_KEY";
 import { BASE_URL } from "../../apis/BASE_URL";
-
+import styles from './styles';
 
 export default function MovieListScreen() {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -57,32 +57,3 @@ export default function MovieListScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: 15,
-  },
-  loading: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  detailBox: {
-    margin: 15,
-    padding: 15,
-    backgroundColor: "#fff5f8",
-    borderRadius: 16,
-    elevation: 2,
-  },
-  movieTitle: {
-    fontSize: 18,
-    fontWeight: "700",
-    marginBottom: 8,
-  },
-  overview: {
-    fontSize: 14,
-    color: "#333",
-  },
-});

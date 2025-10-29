@@ -68,4 +68,54 @@ export const getMovieVideos = async (movieID: number) => {
     return [];
   }
 };
+
+/**
+ * 🔍 Search movies by keyword
+ */
+export const searchMovies = async (query: string) => {
+  if (!query) return [];
+  try {
+    const response = await axios.get(`${BASE_URL}/search/movie`, {
+      params: {
+        api_key: API_KEY,
+        query,
+        language: 'en-US',
+        include_adult: false,
+      },
+    });
+    return response.data.results;
+  } catch (error) {
+    console.error('❌ Error searching movies:', error);
+    return [];
+  }
+};
+
+/**
+ * ▶️ Get YouTube Trailer URL
+ */
+export const getMovieTrailer = async (movieID: number) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/movie/${movieID}/videos`, {
+      params: {
+        api_key: API_KEY,
+        language: 'en-US',
+      },
+    });
+
+    const videos = response.data.results;
+    const trailer =
+      videos.find(
+        (v: any) =>
+          v.type === 'Trailer' &&
+          v.site === 'YouTube' &&
+          (v.official || v.name.toLowerCase().includes('trailer'))
+      ) || videos[0];
+
+    return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
+  } catch (error) {
+    console.error('❌ Error fetching movie trailer:', error);
+    return null;
+  }
+};
+
 export { IMAGE_PATH };

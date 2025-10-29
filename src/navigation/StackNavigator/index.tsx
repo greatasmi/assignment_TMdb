@@ -7,6 +7,11 @@ import BookingScreen from '../../screens/BookingScreen';
 import BottomTabNavigator from '../StackNavigator/BottomTabNavigator'; 
 import BookingDetail from '../../screens/BookingDetail';
 import HomeScreen from '../../screens/HomeScreen';
+import ProfileScreen from '../../screens/ProfileScreen';
+import SearchScreen from '../../screens/SearchScreen';
+import VideosScreen from '../../screens/VideosScreen';
+import NowPlayingScreen from '../../screens/NowPlayingScreen';
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackNavigator = () => {
@@ -53,6 +58,42 @@ const StackNavigator = () => {
         component={BookingDetail}
         options={{
           headerTitle: 'Book Tickets',
+          headerTransparent: true,
+        }}
+      />
+
+      <Stack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{
+          headerTitle: 'Search',
+          headerTransparent: true,
+        }}
+      />
+
+      <Stack.Screen
+        name="VideosScreen"
+        component={VideosScreen}
+        options={{
+          headerTitle: 'Videos',
+          headerTransparent: true,
+        }}
+      />
+
+      <Stack.Screen
+        name="NowPlayingScreen"
+        component={NowPlayingScreen}
+        options={{
+          headerTitle: 'Now Playing',
+          headerTransparent: true,
+        }}
+      />
+
+      <Stack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={{
+          headerTitle: 'Profile',
           headerTransparent: true,
         }}
       />

@@ -3,7 +3,7 @@ import { TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 import { IMovie } from '../../types/interfaces';
 import { IMAGE_PATH } from '../../apis/API_KEY';
 import Images from '../../constant/Images';
-
+import styles from './styles';
 interface IProps {
   movie: IMovie;
   onPress?: () => void;
@@ -29,28 +29,3 @@ const MovieCard: React.FC<IProps> = ({ movie, onPress }) => {
 };
 
 export default MovieCard;
-
-const styles = StyleSheet.create({
-  cardContainer: {
-    height: 200,
-    padding: 15,
-    position: 'relative',
-    alignItems: 'center',
-    
-    justifyContent: 'center',
-  },
-  image: {
-    height: 200,
-    width: 140,
-    borderWidth: 2,
-    borderColor: 'yellow',    
-    borderRadius: 10,
-  },
-  movieTitle: {
-    position: 'absolute',
-    width: 80,
-    textAlign: 'center',
-    color: '#000',
-    fontWeight: '600',
-  },
-});

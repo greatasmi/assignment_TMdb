@@ -9,7 +9,7 @@ import {
 import LinearGradient from "react-native-linear-gradient";
 import { IMovie } from "../../types/interfaces";
 import { useTheme } from "../../constant/themes/useTheme";
-
+import styles from "./styles";
 interface Props {
   movies?: IMovie[]; // optional for safety
   onSelect?: (movieId: number) => void;
@@ -85,38 +85,4 @@ const MovieTabs: React.FC<Props> = ({ movies = [], onSelect = () => {} }) => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  scrollContainer: {
-    marginVertical: 10,
-  },
-  scrollContent: {
-    paddingHorizontal: 10,
-  },
-  tabWrapper: {
-    marginRight: 10,
-  },
-  gradientBorder: {
-    borderRadius: 25,
-    padding: 2,
-  },
-  innerTab: {
-    borderRadius: 25,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  tabText: {
-    fontSize: 13,
-    fontWeight: "600",
-    maxWidth: 140,
-  },
-  emptyText: {
-    marginLeft: 10,
-    fontSize: 14,
-    opacity: 0.6,
-  },
-});
-
 export default MovieTabs;
